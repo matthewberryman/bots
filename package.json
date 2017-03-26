@@ -1,0 +1,27 @@
+{
+  "name": "midsomermurderplots",
+  "version": "0.0.1",
+  "license": "GPL-3.0",
+  "description": "Midsomer Murder Plot generator",
+  "main": "bot.js",
+  "scripts": {
+    "install": "node docker-npm.js install",
+    "deploy": "serverless deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smart-facility/SharkMate-alg.git"
+  },
+  "author": "Samuel Aubin",
+  "bugs": {
+    "url": "https://github.com/smart-facility/SharkMate-alg/issues"
+  },
+  "homepage": "https://github.com/smart-facility/SharkMate-alg",
+  "dependencies": {
+    "text2png": "^1.0.1",
+    "twitter": "^1.7.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  }
+}
