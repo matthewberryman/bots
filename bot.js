@@ -46,7 +46,7 @@ module.exports.tweet = (event, context, callback) => {
   var text = generator.generate();
 
   // Make post request on media endpoint. Pass file data as media parameter
-  client.post('media/upload', {media: text2png(stringWrap(text,35,'\n'), pngopt)}, function(error, media, response) {
+  client.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
 
     if (!error) {
       var status = {
