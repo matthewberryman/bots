@@ -26,4 +26,5 @@ provider:
 functions:
   bot:
     handler: bot.tweet
+    events:
       - schedule: rate(2 minutes)
