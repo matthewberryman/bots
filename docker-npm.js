@@ -1,5 +1,3 @@
-'use strict'
-
 // borrowed from https://gist.github.com/jokeyrhyme/d57097a491aa5ecaf27532d057d72461
 
 // ideal for use with AWS Lambda and native Node.js modules

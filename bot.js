@@ -27,9 +27,10 @@ var truncate = function(string) {
       return string;
 };
 
+// stringWrap function from http://stackoverflow.com/posts/14502311/revisions
 var stringWrap = function (str, width, spaceReplacer) {
     if (str.length>width) {
-        var p=width
+        var p=width;
         for (;p>0 && str[p]!=' ';p--) {
         }
         if (p>0) {
@@ -39,7 +40,7 @@ var stringWrap = function (str, width, spaceReplacer) {
         }
     }
     return str;
-}
+};
 
 module.exports.tweet = (event, context, callback) => {
 
