@@ -9,6 +9,6 @@ Midsomer Murder Plot Generator Twitter bot
 
 ## Steps
 ```shell
-npm install
+node docker-npm install
 serverless deploy
 ```
