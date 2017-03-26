@@ -9,19 +9,44 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
+
+const pngopt = {
+  font: '14px Futura',
+  textColor: 'teal',
+  bgColor: 'linen',
+  lineSpacing: 8,
+  xpadding: 25,
+  ypadding: 25
+};
+
+
 var truncate = function(string) {
    if (string.length > 140)
-      return string.substring(0,string.lastIndexOf(' ',137)+'...');
+      return string.substring(0,string.lastIndexOf(' ',137))+'...';
    else
       return string;
 };
+
+var stringWrap = function (str, width, spaceReplacer) {
+    if (str.length>width) {
+        var p=width
+        for (;p>0 && str[p]!=' ';p--) {
+        }
+        if (p>0) {
+            var left = str.substring(0, p);
+            var right = str.substring(p+1);
+            return left + spaceReplacer + stringWrap(right, width, spaceReplacer);
+        }
+    }
+    return str;
+}
 
 module.exports.tweet = (event, context, callback) => {
 
   var text = generator.generate();
 
   // Make post request on media endpoint. Pass file data as media parameter
-  client.post('media/upload', {media: text2png(text, {textColor: 'blue'})}, function(error, media, response) {
+  client.post('media/upload', {media: text2png(stringWrap(text,35,'\n'), pngopt)}, function(error, media, response) {
 
     if (!error) {
       var status = {

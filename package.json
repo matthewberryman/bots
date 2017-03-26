@@ -1,6 +1,6 @@
 {
   "name": "midsomermurderplots",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "GPL-3.0",
   "description": "Midsomer Murder Plot generator",
   "main": "bot.js",
@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/smart-facility/SharkMate-alg",
   "dependencies": {
-    "text2png": "^1.0.1",
+    "text2png": "git://github.com/matthewberryman/text2png",
     "twitter": "^1.7.0"
   },
   "devDependencies": {

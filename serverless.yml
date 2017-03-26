@@ -11,7 +11,8 @@
 #
 # Happy Coding!
 
-service: aws-nodejs # NOTE: update this with your service name
+service: midsomerplots # NOTE: update this with your service name
+
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -20,11 +21,11 @@ service: aws-nodejs # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs4.3
-  stage: dev
+  stage: prod
   region: us-east-1
 
 functions:
   bot:
     handler: bot.tweet
     events:
-      - schedule: rate(2 minutes)
+      - schedule: rate(4 hours)
