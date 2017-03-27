@@ -28,7 +28,9 @@ module.exports.generate = () => {
     "busybody",
     "bagpiper",
     "thatcher",
-    "undertaker" ];
+    "undertaker",
+    "philosopher",
+    "computer programmer"];
 
   var cause_of_death = [
     "entombed in a statue",
