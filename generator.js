@@ -56,7 +56,7 @@ module.exports.generate = () => {
     "smothered in potpourri",
     "set up like a scarecrow",
     "dead clutching a book about witchcraft",
-    "torn apart by hedgehogs"
+    "torn apart by hedgehogs",
     "stuffed full of battenberg",
     "quilted to death" ];
 
