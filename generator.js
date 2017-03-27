@@ -18,7 +18,17 @@ module.exports.generate = () => {
     "mayor",
     "rose hybrid creator",
     "antiquarian book dealer",
-    "badger whisperer" ];
+    "badger whisperer",
+    "fencing instructor",
+    "violin maestro",
+    "jam magnate",
+    "candle maker",
+    "hedgehog rescue activist",
+    "travel writer",
+    "busybody",
+    "bagpiper",
+    "thatcher",
+    "undertaker" ];
 
   var cause_of_death = [
     "entombed in a statue",
@@ -38,7 +48,17 @@ module.exports.generate = () => {
     "garroted with a very distinctive set of lute strings",
     "under a tractor that is not his usual tractor",
     "baked into an oversized sponge cake",
-    "poisoned with a local variety of toadstool" ];
+    "poisoned with a local variety of toadstool",
+    "buried neck-deep in pudding and eaten by Pudding Ants",
+    "stuffed inside an 18th century cor anglais",
+    "entombed in a large croquembouche",
+    "encased in a giant candle",
+    "smothered in potpourri",
+    "set up like a scarecrow",
+    "dead clutching a book about witchcraft",
+    "torn apart by hedgehogs"
+    "stuffed full of battenberg",
+    "quilted to death" ];
 
   var village_group = [
     "medieval reenactment society",
@@ -58,7 +78,17 @@ module.exports.generate = () => {
     "brass band",
     "madrigal enthusiasts",
     "ghost hunters society",
-    "ghost" ];
+    "ghost",
+    "financially embarrassed aristocrat",
+    "UFO buff",
+    "poacher",
+    "witch",
+    "New Age commune",
+    "teen computer hacker",
+    "impetuous young heir",
+    "scout troop",
+    "suspicious out-of-towners",
+    "short-wave radio club" ];
 
   var angry_at = [
     "parking restrictions",
@@ -78,7 +108,17 @@ module.exports.generate = () => {
     "badger culling",
     "a museum dedicated to an obscure local poet",
     "owls",
-    "redevelopment and/or radical Islam" ];
+    "redevelopment and/or radical Islam",
+    "a plan to sell off the mansion",
+    "a forthcoming eclipse",
+    "a controversial judging decision in the Midsomer Pig Show",
+    "climate change",
+    "a new wind farm",
+    "all-encompassing whiteness",
+    "the cultural and economic hegemony of Causton",
+    "Dutch Elm Disease",
+    "the arrival of a touring pantomime",
+    "a planned biography of a deceased local identity" ];
 
     var threatened = [
       "the annual cheese festival",
@@ -98,7 +138,17 @@ module.exports.generate = () => {
       "the future of Morris Dancing",
       "the very survival of England",
       "near-lethal levels of tweeness",
-      "the Barnabys' marriage" ];
+      "the Barnabys' marriage",
+      "an annual cricket match that everyone really cares about for some reason",
+      "crop circles",
+      "the trout pond",
+      "to destroy the boarding school’s secret society",
+      "otters",
+      "a huge annual event in Midsomer that we’re nonetheless only hearing about for the first time",
+      "a nearby grotto associated with a medieval saint",
+      "to set off unexploded bombs from WWII",
+      "caravaning",
+      "a further nine seasons of this nonsense" ];
 
 
   var rands = [Math.floor ( Math.random() * local_job.length ), Math.floor ( Math.random() * cause_of_death.length ), Math.floor ( Math.random() * village_group.length ), Math.floor ( Math.random() * angry_at.length ), Math.floor ( Math.random() * threatened.length )];
