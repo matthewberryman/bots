@@ -81,7 +81,7 @@ module.exports.generate = () => {
     "madrigal enthusiasts",
     "ghost hunters society",
     "ghost",
-    "financially embarrassed aristocrat",
+    "financially-embarrassed aristocrat",
     "UFO buff",
     "poacher",
     "witch",
