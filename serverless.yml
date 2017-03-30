@@ -29,3 +29,4 @@ functions:
     handler: bot.tweet
     events:
       - schedule: rate(4 hours)
+    memorySize: 128
