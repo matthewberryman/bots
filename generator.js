@@ -60,6 +60,7 @@ module.exports.generate = () => {
     "dead clutching a book about witchcraft",
     "torn apart by hedgehogs",
     "stuffed full of battenberg",
+    "desiccated by magnesium perchlorate",
     "quilted to death" ];
 
   var village_group = [
