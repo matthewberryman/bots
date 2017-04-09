@@ -10,13 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/smart-facility/SharkMate-alg.git"
+    "url": "git+https://github.com/matthewberryman/midsomerplots.git"
   },
-  "author": "Samuel Aubin",
+  "author": "Matthew Berryman",
   "bugs": {
-    "url": "https://github.com/smart-facility/SharkMate-alg/issues"
+    "url": "https://github.com/matthewberryman/midsomerplots/issues"
   },
-  "homepage": "https://github.com/smart-facility/SharkMate-alg",
+  "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
     "text2png": "git://github.com/matthewberryman/text2png",
     "twitter": "^1.7.0"
