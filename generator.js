@@ -30,6 +30,7 @@ module.exports.generate = () => {
     "A local thatcher",
     "A local undertaker",
     "A local philosopher",
+    "An unexpected visitor",
     "A local computer programmer"];
 
   var cause_of_death = [
@@ -61,6 +62,8 @@ module.exports.generate = () => {
     "torn apart by hedgehogs",
     "stuffed full of battenberg",
     "desiccated by magnesium perchlorate",
+    "suffocated in a vat of candy floss",
+    "eaten by Cromer crabs",
     "quilted to death" ];
 
   var village_group = [
