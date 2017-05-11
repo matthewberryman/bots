@@ -1,36 +1,36 @@
 
 module.exports.generate = () => {
-  var local_job = [
-    "bee keeper",
-    "archaeologist",
-    "historian",
-    "cider maker",
-    "unpopular businessman",
-    "sculptor",
-    "eccentric Shakespearian actor",
-    "owl breeder",
-    "hermit with a dark secret",
-    "miller",
-    "critic of contemporary architecture",
-    "poacher",
-    "uncompromising environmentalist",
-    "inexplicably celebrated poet",
-    "mayor",
-    "rose hybrid creator",
-    "antiquarian book dealer",
-    "badger whisperer",
-    "fencing instructor",
-    "violin maestro",
-    "jam magnate",
-    "candle maker",
-    "hedgehog rescue activist",
-    "travel writer",
-    "busybody",
-    "bagpiper",
-    "thatcher",
-    "undertaker",
-    "philosopher",
-    "computer programmer"];
+  var murdered_person = [
+    "A local bee keeper",
+    "A local archaeologist",
+    "A local historian",
+    "A local cider maker",
+    "A local unpopular businessman",
+    "A local sculptor",
+    "A local eccentric Shakespearian actor",
+    "A local owl breeder",
+    "A local hermit with a dark secret",
+    "A local miller",
+    "A local critic of contemporary architecture",
+    "A local poacher",
+    "A local uncompromising environmentalist",
+    "A local inexplicably celebrated poet",
+    "A local mayor",
+    "A local rose hybrid creator",
+    "A local antiquarian book dealer",
+    "A local badger whisperer",
+    "A local fencing instructor",
+    "A local violin maestro",
+    "A local jam magnate",
+    "A local candle maker",
+    "A local hedgehog rescue activist",
+    "A local travel writer",
+    "A local busybody",
+    "A local bagpiper",
+    "A local thatcher",
+    "A local undertaker",
+    "A local philosopher",
+    "A local computer programmer"];
 
   var cause_of_death = [
     "entombed in a statue",
@@ -153,8 +153,7 @@ module.exports.generate = () => {
       "caravaning",
       "a further nine seasons of this nonsense" ];
 
+  var rands = [Math.floor ( Math.random() * murdered_person.length ), Math.floor ( Math.random() * cause_of_death.length ), Math.floor ( Math.random() * village_group.length ), Math.floor ( Math.random() * angry_at.length ), Math.floor ( Math.random() * threatened.length )];
 
-  var rands = [Math.floor ( Math.random() * local_job.length ), Math.floor ( Math.random() * cause_of_death.length ), Math.floor ( Math.random() * village_group.length ), Math.floor ( Math.random() * angry_at.length ), Math.floor ( Math.random() * threatened.length )];
-
-  return "A local " + local_job[rands[0]] + " is found " + cause_of_death[rands[1]] +". Suspicion falls on the village "+ village_group[rands[2]] + ", angry that " + angry_at[rands[3]] + " might threaten " + threatened[rands[4]]+".";
+  return murdered_person[rands[0]] + " is found " + cause_of_death[rands[1]] +". Suspicion falls on the village "+ village_group[rands[2]] + ", angry that " + angry_at[rands[3]] + " might threaten " + threatened[rands[4]]+".";
 };
