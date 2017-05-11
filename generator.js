@@ -31,6 +31,7 @@ module.exports.generate = () => {
     "A local undertaker",
     "A local philosopher",
     "An unexpected visitor",
+    "A local narrator",
     "A local computer programmer"];
 
   var cause_of_death = [
