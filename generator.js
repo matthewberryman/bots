@@ -32,6 +32,7 @@ module.exports.generate = () => {
     "A local philosopher",
     "An unexpected visitor",
     "A local narrator",
+    "The local viscount",
     "A local computer programmer"];
 
   var cause_of_death = [
@@ -65,6 +66,7 @@ module.exports.generate = () => {
     "desiccated by magnesium perchlorate",
     "suffocated in a vat of candy floss",
     "eaten by Cromer crabs",
+    "bludgeoned by a croquet mallet",
     "quilted to death" ];
 
   var village_group = [
@@ -155,6 +157,7 @@ module.exports.generate = () => {
       "a nearby grotto associated with a medieval saint",
       "to set off unexploded bombs from WWII",
       "caravaning",
+      "the great bake off",
       "a further nine seasons of this nonsense" ];
 
   var rands = [Math.floor ( Math.random() * murdered_person.length ), Math.floor ( Math.random() * cause_of_death.length ), Math.floor ( Math.random() * village_group.length ), Math.floor ( Math.random() * angry_at.length ), Math.floor ( Math.random() * threatened.length )];
