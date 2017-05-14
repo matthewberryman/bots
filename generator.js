@@ -64,7 +64,7 @@ module.exports.generate = () => {
     "torn apart by hedgehogs",
     "stuffed full of battenberg",
     "desiccated by magnesium perchlorate",
-    "suffocated in a vat of candy floss",
+    "suffocated in a vat of fairy floss",
     "eaten by Cromer crabs",
     "bludgeoned by a croquet mallet",
     "quilted to death" ];
