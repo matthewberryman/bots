@@ -158,6 +158,7 @@ module.exports.generate = () => {
       "to set off unexploded bombs from WWII",
       "caravaning",
       "the great bake off",
+      "the biggest and most beautiful wisteria in the country",
       "a further nine seasons of this nonsense" ];
 
   var rands = [Math.floor ( Math.random() * murdered_person.length ), Math.floor ( Math.random() * cause_of_death.length ), Math.floor ( Math.random() * village_group.length ), Math.floor ( Math.random() * angry_at.length ), Math.floor ( Math.random() * threatened.length )];
