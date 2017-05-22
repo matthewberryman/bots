@@ -33,6 +33,7 @@ module.exports.generate = () => {
     "An unexpected visitor",
     "A local narrator",
     "The local viscount",
+    "A local astronomer",
     "A local computer programmer"];
 
   var cause_of_death = [
@@ -97,6 +98,7 @@ module.exports.generate = () => {
     "impetuous young heir",
     "scout troop",
     "suspicious out-of-towners",
+    "society of Venus watchers",
     "short-wave radio club" ];
 
   var angry_at = [
