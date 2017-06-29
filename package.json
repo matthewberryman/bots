@@ -19,9 +19,9 @@
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
     "text2png": "git://github.com/matthewberryman/text2png",
-    "twitter": "^1.7.0"
+    "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "mocha": "^3.4.1"
+    "mocha": "^3.4.2"
   }
 }
