@@ -45,6 +45,7 @@ module.exports.generate = () => {
     "strapped to an enormous cheese wheel",
     "stung to death by deliberately enraged bees",
     "drowned in cider",
+    "decoupaged to a 1950s walnut veneer sideboard",
     "strangled by a scarf",
     "drowned in a TV monitor filled with red wine",
     "dropped from an aeroplane",
