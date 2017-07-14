@@ -70,6 +70,7 @@ module.exports.generate = () => {
     "encased in a giant candle",
     "smothered in potpourri",
     "set up like a scarecrow",
+    "crushed under the world's biggest scone",
     "dead clutching a book about witchcraft",
     "torn apart by hedgehogs",
     "stuffed full of battenberg",
