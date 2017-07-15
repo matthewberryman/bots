@@ -78,6 +78,7 @@ module.exports.generate = () => {
     "suffocated in a vat of fairy floss",
     "eaten by Cromer crabs",
     "bludgeoned by a croquet mallet",
+    "paved into the village thoroughfare",
     "quilted to death" ];
 
   var village_group = [
