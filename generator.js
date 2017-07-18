@@ -17,6 +17,7 @@ module.exports.generate = () => {
     "A local inexplicably celebrated poet",
     "A local mayor",
     "A local spinster",
+    "A popular marine biologist",
     "A local pigeon enthusiast",
     "The local magistrate",
     "A local rose hybrid creator",
@@ -41,6 +42,7 @@ module.exports.generate = () => {
 
   var cause_of_death = [
     "entombed in a statue",
+    "in a tank with an octopus named Fred wrapped around the body",
     "crushed to death by apples",
     "strapped to an enormous cheese wheel",
     "stung to death by deliberately enraged bees",
@@ -180,6 +182,7 @@ module.exports.generate = () => {
       "the local rabbit show",
       "to expose a web of sex, blackmail and lies",
       "duffle coat production",
+      "drone deliveries",
       "the biggest and most beautiful wisteria in the country",
       "a further nine seasons of this nonsense" ];
 
