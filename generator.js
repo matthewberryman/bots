@@ -106,7 +106,7 @@ module.exports.generate = () => {
     "cult leader",
     "prodigal son",
     "chamber of commerce",
-    "Causton amateur drama group",
+    "amateur drama group",
     "church community",
     "twins",
     "brass band",
@@ -131,7 +131,6 @@ module.exports.generate = () => {
     "researchers who don't understand how much this all means to the village",
     "a proposed zoo",
     "the opening of a McDonald's store",
-    "the closure of the local discotheque",
     "the decline of the red squirrel population from squirrel pox",
     "modernity itself",
     "a big movie shoot taking place in the town",
@@ -198,6 +197,7 @@ module.exports.generate = () => {
       "to expose a web of sex, blackmail and lies",
       "duffle coat production",
       "drone deliveries",
+      "the closure of the local discotheque",
       "the biggest and most beautiful wisteria in the country",
       "a further nine seasons of this nonsense" ];
 
