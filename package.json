@@ -6,6 +6,7 @@
   "main": "bot.js",
   "scripts": {
     "test": "mocha",
+    "install": "node docker-npm install",
     "deploy": "serverless deploy"
   },
   "repository": {
@@ -20,7 +21,7 @@
   "dependencies": {
     "chai": "^4.1.0",
     "mocha": "^3.4.2",
-    "text2png": "git://github.com/matthewberryman/text2png",
+    "text2png": "^1.0.1",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
