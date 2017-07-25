@@ -19,4 +19,4 @@ install:
   npm install
 
 script:
-  serverless deploy
+  npm test && serverless deploy
