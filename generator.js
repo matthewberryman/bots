@@ -48,6 +48,7 @@ module.exports.generate = () => {
     "crushed to death by apples",
     "strapped to an enormous cheese wheel",
     "stung to death by deliberately enraged bees",
+    "bitten to death by a big white cat",
     "drowned in cider",
     "decoupaged to a 1950s walnut veneer sideboard",
     "strangled by a scarf",
@@ -107,6 +108,7 @@ module.exports.generate = () => {
     "prodigal son",
     "chamber of commerce",
     "amateur drama group",
+    "teenagers wearing hoodies",
     "church community",
     "twins",
     "brass band",
@@ -199,6 +201,7 @@ module.exports.generate = () => {
       "drone deliveries",
       "the closure of the local discotheque",
       "the biggest and most beautiful wisteria in the country",
+      "the local co-op",
       "a further nine seasons of this nonsense" ];
 
   var rands = [Math.floor ( Math.random() * murdered_person.length ), Math.floor ( Math.random() * cause_of_death.length ), Math.floor ( Math.random() * village_group.length ), Math.floor ( Math.random() * angry_at.length ), Math.floor ( Math.random() * threatened.length )];
