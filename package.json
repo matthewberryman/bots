@@ -5,7 +5,6 @@
   "description": "Midsomer Murder Plot generator",
   "main": "bot.js",
   "scripts": {
-    "install": "node docker-npm.js install",
     "deploy": "serverless deploy"
   },
   "repository": {
