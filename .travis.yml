@@ -2,6 +2,11 @@ language: node_js
 
 node_js: "6.10"
 
+addons:
+  apt:
+    packages:
+    - libgif-dev
+
 env:
   global:
   - secure: gYVEPiq74k3zu9wiIXxjBxOiNO1dXbtpOQ8UTg42uQ472c5OHlHAOFXAYY7zzQEb6RYYHSmG/sUjaGufXA4mAG3oN7EbE0L6pnJqTibkXtFStjVzz3CM2SFB23sZH6hiMLz6+MM2enKrVfljXUCD3wQdbSdQA3PaY4UyvouaIB71YSOZCmPuDgYyjq0UEK8WFmBPaOeBxiLRqZxmqGvn8OgsFtAdFQnUzw5xKEco1HJ9/Y4ZTudJkd9rqtBqM06t2sUv9MadHtfKAy3a46tRfuDS6EiZnDlyvDYej6wzBdmrDhIrDr/l5CyDrVoUbGQ9+lr/jq6ax6z/ecWJiX+3NVNUhoMqdcaDcpHIBrhLhnV/D1cVvBN9n6vDfEoJ1tfh45Uj2ST682ipyfZPNzjd7k/mXad6bfIieg/efk0TtVg2Ky63klkau1sLGyk1ZeVdKkvtdwth3TMMifU9fny0x915/cPx91ovreDauxQsrbN5t3UUph43zMCbF+LTZPZRTGkY28wBLusflhDynlkiOIK6AKxT5frOlCGFH+C+xiYQ2ocB7wKmNCuUWPIgALiQqDS2srbG9rZ7EUUZIbq6AlN0AxbwwNb4R+PNdN5/07Br2VrXuGePBilNIeuEUJo/RLb2Ul6bStIdsKbYMoYQi7UlYhkLCcVn/qnIHAxlmxw=
