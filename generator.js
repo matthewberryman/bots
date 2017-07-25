@@ -9,6 +9,8 @@ module.exports.generate = () => {
     "A local sculptor",
     "The village bovine inseminator",
     "A local arsonist",
+    "A local homeopath",
+    "The village's intemperate Buddhist",
     "A local eccentric Shakespearian actor",
     "A local owl breeder",
     "A local hermit with a dark secret",
