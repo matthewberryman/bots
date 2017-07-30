@@ -159,7 +159,7 @@ module.exports.generate = () => {
     "musical innovation",
     "the new deer sanctuary",
     "doggers",
-    "decline in furniture manufacture",
+    "the decline in furniture manufacture",
     "meddling ornithologists",
     "equestrian tourism",
     "badger culling",
