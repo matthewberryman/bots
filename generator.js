@@ -91,6 +91,7 @@ module.exports.generate = () => {
     "encased in a giant candle",
     "crushed in a dark satanic mill",
     "bored to death by formulaic TV series",
+    "dressed like a bride and found dead in a bath",
     "stuffed full of nuts by squirrels",
     "with intestines smeared over the local stone circle",
     "with a golden arrow through the heart",
@@ -176,6 +177,7 @@ module.exports.generate = () => {
     "a controversial judging decision in the Midsomer Pig Show",
     "climate change",
     "a new wind farm",
+    "the rise of artificial intelligence",
     "all-encompassing whiteness",
     "the cultural and economic hegemony of Causton",
     "Dutch Elm Disease",
@@ -221,6 +223,9 @@ module.exports.generate = () => {
       "the closure of the local discotheque",
       "the biggest and most beautiful wisteria in the country",
       "the local co-op",
+      "a rare plant found on the cricket pitch",
+      "Geoff, the last surviving resident of Midsomer",
+      "to make history repeat itself",
       "a further nine seasons of this nonsense" ];
 
   var rands = [Math.floor ( Math.random() * murdered_person.length ), Math.floor ( Math.random() * cause_of_death.length ), Math.floor ( Math.random() * village_group.length ), Math.floor ( Math.random() * angry_at.length ), Math.floor ( Math.random() * threatened.length )];
