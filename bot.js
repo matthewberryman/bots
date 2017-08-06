@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk'),
   Twitter = require('twitter'),
   text2png = require('text2png'),
-  generator = require('generator');
+  generator = require('./generator');
 
 AWS.config.update({region: 'us-east-1'});
 
@@ -57,7 +57,7 @@ module.exports.tweet = (event, context, callback) => {
   };
 
   sqs.receiveMessage(params).promise().then(function(data) {
-    var text = generate(Number(data.Messages[0].MessageAttributes.seed.StringValue));
+    var text = generate.generate(Number(data.Messages[0].MessageAttributes.seed.StringValue));
     var params = {
       QueueUrl: process.env.SQS_QUEUE_URL, /* required */
       ReceiptHandle: data.Messages[0].ReceiptHandle
