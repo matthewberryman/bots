@@ -57,7 +57,7 @@ module.exports.tweet = (event, context, callback) => {
   };
 
   sqs.receiveMessage(params).promise().then(function(data) {
-    var text = generate.generate(Number(data.Messages[0].MessageAttributes.seed.StringValue));
+    var text = generator.generate(Number(data.Messages[0].MessageAttributes.seed.StringValue));
     var params = {
       QueueUrl: process.env.SQS_QUEUE_URL, /* required */
       ReceiptHandle: data.Messages[0].ReceiptHandle
