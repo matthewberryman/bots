@@ -127,6 +127,7 @@ module.exports.generate = (seed) => {
     "prodigal son",
     "chamber of commerce",
     "amateur drama group",
+    "shuttlecock appreciation society",
     "black death re-enactment society",
     "ennui society",
     "Communist Party chapter",
