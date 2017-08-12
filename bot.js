@@ -43,6 +43,26 @@ var stringWrap = function (str, width, spaceReplacer) {
     return str;
 };
 
+var post = function(text) {
+  client.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
+    if (!error) {
+      var status = {
+        status: truncate(text) ,
+        media_ids: media.media_id_string // Pass the media id string
+      };
+      client.post('statuses/update', status, function(error, tweet, response) {
+        if (!error) {
+          console.log(tweet);
+        }
+      });
+    }
+  });
+};
+
+var unixTimeInSec = function() {
+  return Math.round((new Date()).getTime()/1000);
+};
+
 module.exports.tweet = (event, context, callback) => {
 
   var sqs = new AWS.SQS();
@@ -57,29 +77,22 @@ module.exports.tweet = (event, context, callback) => {
   };
 
   sqs.receiveMessage(params).promise().then(function(data) {
-    var text = generator.generate(Number(data.Messages[0].MessageAttributes.seed.StringValue));
+    var SQSseed = Number(data.Messages[0].MessageAttributes.seed.StringValue);
+    var seed = SQSseed < 0 ? SQSseed + unixTimeInSec()
+      : SQSseed - unixTimeInSec();
     var params = {
       QueueUrl: process.env.SQS_QUEUE_URL, /* required */
       ReceiptHandle: data.Messages[0].ReceiptHandle
     };
     sqs.deleteMessage(params).promise().then(function(data) {
-      client.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
-        if (!error) {
-          var status = {
-            status: truncate(text) ,
-            media_ids: media.media_id_string // Pass the media id string
-          };
-          client.post('statuses/update', status, function(error, tweet, response) {
-            if (!error) {
-              console.log(tweet);
-            }
-          });
-        }
-      });
-    }).catch(function(err) {
+      post(generator.generate(seed));
+    })
+    .catch(function(err) {
+      post(generator.generate(unixTimeInSec()));
       console.log(err);
     });
   }).catch(function(err) {
+    post(generator.generate(unixTimeInSec()));
     console.log(err);
   });
   callback(null, { message: 'Bot tweeted successfully!', event });
