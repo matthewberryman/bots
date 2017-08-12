@@ -21,7 +21,7 @@ service: midsomerplots # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs6.10
-  stage: dev
+  stage: prod
   region: us-east-1
 
 resources:
