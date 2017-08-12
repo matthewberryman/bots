@@ -1,6 +1,6 @@
 {
   "name": "midsomermurderplots",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "GPL-3.0",
   "description": "Midsomer Murder Plot generator",
   "main": "bot.js",
@@ -19,11 +19,12 @@
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
     "chai": "^4.1.0",
-    "mocha": "^3.4.2",
+    "mersenne-twister": "^1.1.0",
     "text2png": "^1.0.1",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "mocha": "^3.4.2"
+    "aws-sdk": "^2.94.0",
+    "mocha": "^3.5.0"
   }
 }

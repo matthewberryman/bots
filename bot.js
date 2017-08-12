@@ -1,14 +1,16 @@
-var Twitter = require('twitter');
-var text2png = require('text2png');
-var generator = require('generator');
+const AWS = require('aws-sdk'),
+  Twitter = require('twitter'),
+  text2png = require('text2png'),
+  generator = require('./generator');
 
-var client = new Twitter({
+AWS.config.update({region: 'us-east-1'});
+
+const client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
-
 
 const pngopt = {
   font: '14px Futura',
@@ -41,25 +43,57 @@ var stringWrap = function (str, width, spaceReplacer) {
     return str;
 };
 
-module.exports.tweet = (event, context, callback) => {
-
-  var text = generator.generate();
-
-  // Make post request on media endpoint. Pass file data as media parameter
+var post = function(text) {
   client.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
-
     if (!error) {
       var status = {
         status: truncate(text) ,
         media_ids: media.media_id_string // Pass the media id string
       };
-
       client.post('statuses/update', status, function(error, tweet, response) {
         if (!error) {
           console.log(tweet);
         }
       });
     }
+  });
+};
+
+var unixTimeInSec = function() {
+  return Math.round((new Date()).getTime()/1000);
+};
+
+module.exports.tweet = (event, context, callback) => {
+
+  var sqs = new AWS.SQS();
+  var params = {
+    QueueUrl: process.env.SQS_QUEUE_URL, /* required */
+    MaxNumberOfMessages: 1,
+    MessageAttributeNames: [
+      "seed",
+      /* more items */
+    ],
+    VisibilityTimeout: 5
+  };
+
+  sqs.receiveMessage(params).promise().then(function(data) {
+    var SQSseed = Number(data.Messages[0].MessageAttributes.seed.StringValue);
+    var seed = SQSseed < 0 ? SQSseed + unixTimeInSec()
+      : SQSseed - unixTimeInSec();
+    var params = {
+      QueueUrl: process.env.SQS_QUEUE_URL, /* required */
+      ReceiptHandle: data.Messages[0].ReceiptHandle
+    };
+    sqs.deleteMessage(params).promise().then(function(data) {
+      post(generator.generate(seed));
+    })
+    .catch(function(err) {
+      post(generator.generate(unixTimeInSec()));
+      console.log(err);
+    });
+  }).catch(function(err) {
+    post(generator.generate(unixTimeInSec()));
+    console.log(err);
   });
   callback(null, { message: 'Bot tweeted successfully!', event });
 };

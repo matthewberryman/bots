@@ -1,5 +1,9 @@
+const MersenneTwister = require('mersenne-twister');
 
-module.exports.generate = () => {
+module.exports.generate = (seed) => {
+
+  mt = new MersenneTwister(seed);
+
   var murdered_person = [
     "A local bee keeper",
     "A local archaeologist",
@@ -228,7 +232,7 @@ module.exports.generate = () => {
       "to make history repeat itself",
       "a further nine seasons of this nonsense" ];
 
-  var rands = [Math.floor ( Math.random() * murdered_person.length ), Math.floor ( Math.random() * cause_of_death.length ), Math.floor ( Math.random() * village_group.length ), Math.floor ( Math.random() * angry_at.length ), Math.floor ( Math.random() * threatened.length )];
+  var rands = [Math.floor ( mt.random() * murdered_person.length ), Math.floor ( mt.random() * cause_of_death.length ), Math.floor ( mt.random() * village_group.length ), Math.floor ( mt.random() * angry_at.length ), Math.floor ( mt.random() * threatened.length )];
 
   return murdered_person[rands[0]] + " is found " + cause_of_death[rands[1]] +". Suspicion falls on the village "+ village_group[rands[2]] + ", angry that " + angry_at[rands[3]] + " might threaten " + threatened[rands[4]]+".";
 };
