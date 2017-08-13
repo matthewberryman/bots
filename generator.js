@@ -95,7 +95,7 @@ module.exports.generate = (seed) => {
     "encased in a giant candle",
     "crushed in a dark satanic mill",
     "bored to death by formulaic TV series",
-    "dressed like a bride and found dead in a bath",
+    "dressed like a bride and dead in a bath",
     "stuffed full of nuts by squirrels",
     "with intestines smeared over the local stone circle",
     "with a golden arrow through the heart",
