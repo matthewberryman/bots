@@ -53,6 +53,7 @@ module.exports.generate = (seed) => {
 
   var cause_of_death = [
     "entombed in a statue",
+    "murdered at the suggestion of a singing elevator voice",
     "imprisoned in a vast wicker figure with goats and burned alive",
     "found flattened in a medieval bookpress",
     "in a tank with an octopus named Fred wrapped around the body",
