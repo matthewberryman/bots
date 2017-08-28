@@ -66,7 +66,7 @@ module.exports.generate = (seed) => {
     "by local police investigating trouble at the mill",
     "murdered at the suggestion of a singing elevator voice",
     "imprisoned in a vast wicker figure with goats and burned alive",
-    "found flattened in a medieval bookpress",
+    "flattened in a medieval bookpress",
     "in a tank with an octopus named Fred wrapped around the body",
     "crushed to death by apples",
     "strapped to an enormous cheese wheel",
