@@ -7,6 +7,8 @@ module.exports.generate = (seed) => {
   var murdered_person = [
     "A local bee keeper",
     "A socially-inept Twitter bot developer",
+    "A visiting Toby Jug provenance evaluator",
+    "The town's cantankerous children's party planner",
     "A local archaeologist",
     "A local historian",
     "A local cider maker",
@@ -56,6 +58,12 @@ module.exports.generate = (seed) => {
 
   var cause_of_death = [
     "entombed in a statue",
+    "driven to suicide by loudly whispered passive aggressive comments regarding the state of their garden",
+    "destroyed by a deathwatch beetle (Xestobium rufovillosum)",
+    "inflated on a pair of late 19th century industrial blacksmiths bellows",
+    "dead with their privates inexplicably lodged in the vicarage donations box",
+    "quite armless erected as the Venus de Milo",
+    "by local police investigating trouble at the mill",
     "murdered at the suggestion of a singing elevator voice",
     "imprisoned in a vast wicker figure with goats and burned alive",
     "found flattened in a medieval bookpress",
