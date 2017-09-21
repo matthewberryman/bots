@@ -73,7 +73,7 @@ module.exports.generate = (seed) => {
     "flattened in a medieval bookpress",
     "in a tank with an octopus named Fred wrapped around the body",
     "crushed to death by apples",
-    "dead at the hands of a pineapple-slicer-wielding opthamologist",
+    "dead at the hands of a pineapple-slicer-wielding ophthalmologist",
     "dead clutching a stuffed Pekinese called MiMi",
     "strapped to an enormous cheese wheel",
     "stung to death by deliberately enraged bees",
