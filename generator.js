@@ -182,7 +182,7 @@ module.exports.generate = (seed) => {
     "a big movie shoot taking place in the town",
     "redevelopment on the land of a down-on-his-luck aristocrat",
     "new beekeeping methods",
-    "the theft of a Burmese Bell",
+    "the theft of a Burmese bell",
     "multiculturalism",
     "a charismatic out-of-towner",
     "someone who doesn't yet know they're actually the killer's daughter",
