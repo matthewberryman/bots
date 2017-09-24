@@ -12,6 +12,7 @@ module.exports.generate = (seed) => {
     "A local archaeologist",
     "A retired American woman",
     "A lonely librarian",
+    "An underappreciated archivist",
     "A local historian",
     "A local cider maker",
     "A local unpopular businessman",
