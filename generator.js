@@ -51,6 +51,7 @@ module.exports.generate = (seed) => {
     "A local busybody",
     "A local bagpiper",
     "A local thatcher",
+    "The master of the local Freemasons lodge",
     "A local undertaker",
     "A local philosopher",
     "An unexpected visitor",
@@ -61,6 +62,8 @@ module.exports.generate = (seed) => {
 
   var cause_of_death = [
     "entombed in a statue",
+    "bowl'd to death with turnips",
+    "dead with a can of cheap lager insterted into the rectum",
     "driven to suicide by loudly whispered passive aggressive comments regarding the state of their garden",
     "destroyed by a deathwatch beetle (Xestobium rufovillosum)",
     "dead at a medieval pulpit that's carved from a single oak",
@@ -157,6 +160,7 @@ module.exports.generate = (seed) => {
     "teenagers wearing hoodies",
     "church community",
     "twins",
+    "real ale appreciation society",
     "brass band",
     "madrigal enthusiasts",
     "ghost hunters society",
