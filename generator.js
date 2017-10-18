@@ -65,7 +65,7 @@ module.exports.generate = (seed) => {
   var cause_of_death = [
     "entombed in a statue",
     "bowl'd to death with turnips",
-    "dead with a can of cheap lager insterted into the rectum",
+    "dead with a can of cheap lager inserted into the rectum",
     "driven to suicide by loudly whispered passive aggressive comments regarding the state of their garden",
     "destroyed by a deathwatch beetle (Xestobium rufovillosum)",
     "dead at a medieval pulpit that's carved from a single oak",
