@@ -80,6 +80,11 @@ module.exports.generate = (seed) => {
     "flattened in a medieval bookpress",
     "in a tank with an octopus named Fred wrapped around the body",
     "crushed to death by apples",
+    "drowned at the bottom of the mill pond",
+    "shot in the heart at the stroke of midnight",
+    "beaten to death by an oak staff",
+    "with brains extruding from a head wound",
+    "eviscerated into an offal cart (US patent 3863985)",
     "dead at the hands of a pineapple-slicer-wielding ophthalmologist",
     "dead clutching a stuffed Pekinese called MiMi",
     "strapped to an enormous cheese wheel",
@@ -160,6 +165,9 @@ module.exports.generate = (seed) => {
     "black death re-enactment society",
     "ennui society",
     "Communist Party chapter",
+    "tweeters who prefer tweets in 140 characters",
+    "Brexiteers",
+    "infosec community",
     "teenagers wearing hoodies",
     "church community",
     "twins",
@@ -279,6 +287,11 @@ module.exports.generate = (seed) => {
       "a rare plant found on the cricket pitch",
       "Geoff, the last surviving resident of Midsomer",
       "to make history repeat itself",
+      "to reveal the name of Dr Who",
+      "to publish spoilers for an upcoming episode of Eastenders",
+      "to make all the clocks in the city begin to whirr and chime",
+      "to do the time warp again",
+      "to expose a conservative councillor's ownership of a brothel",
       "a further nine seasons of this nonsense" ];
 
   var rands = [Math.floor ( mt.random() * murdered_person.length ), Math.floor ( mt.random() * cause_of_death.length ), Math.floor ( mt.random() * village_group.length ), Math.floor ( mt.random() * angry_at.length ), Math.floor ( mt.random() * threatened.length )];
