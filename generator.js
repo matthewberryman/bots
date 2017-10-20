@@ -274,7 +274,7 @@ module.exports.generate = (seed) => {
       "the closure of the local discotheque",
       "the biggest and most beautiful wisteria in the country",
       "the local co-op",
-      "planned civic centre",
+      "the planned civic centre",
       "to turn a slightly neurotic Sykes into a savage killer terrier",
       "a rare plant found on the cricket pitch",
       "Geoff, the last surviving resident of Midsomer",
