@@ -74,6 +74,7 @@ module.exports.generate = (seed) => {
     "dead with their privates inexplicably lodged in the vicarage donations box",
     "quite armless erected as the Venus de Milo",
     "dead in the miniature village",
+    "quite lifeless in the Living Museum",
     "by local police investigating trouble at the mill",
     "murdered at the suggestion of a singing elevator voice",
     "imprisoned in a vast wicker figure with goats and burned alive",
@@ -241,6 +242,8 @@ module.exports.generate = (seed) => {
     var threatened = [
       "the annual cheese festival",
       "rambling rights",
+      "the Midsomer Luxury Villas",
+      "the closure of the Auburn Echo Village",
       "to expose the church's historical manuscript as a forgery",
       "to overshadow the sheepdog trials",
       "the town's largely potpourri-based economy",
