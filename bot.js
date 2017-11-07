@@ -22,8 +22,8 @@ const pngopt = {
 
 
 var truncate = function(string) {
-   if (string.length > 140)
-      return string.substring(0,string.lastIndexOf(' ',137))+'...';
+   if (string.length > 280)
+      return string.substring(0,string.lastIndexOf(' ',277))+'...';
    else
       return string;
 };
@@ -44,19 +44,30 @@ var stringWrap = function (str, width, spaceReplacer) {
 };
 
 var post = function(text) {
-  client.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
-    if (!error) {
-      var status = {
-        status: truncate(text) ,
-        media_ids: media.media_id_string // Pass the media id string
-      };
-      client.post('statuses/update', status, function(error, tweet, response) {
-        if (!error) {
-          console.log(tweet);
-        }
-      });
-    }
-  });
+  if (text.length>280) {
+    client.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
+      if (!error) {
+        var status = {
+          status: truncate(text) ,
+          media_ids: media.media_id_string // Pass the media id string
+        };
+        client.post('statuses/update', status, function(error, tweet, response) {
+          if (!error) {
+            console.log(tweet);
+          }
+        });
+      }
+    });
+  } else {
+    var status = {
+      status: text
+    };
+    client.post('statuses/update', status, function(error, tweet, response) {
+      if (!error) {
+        console.log(tweet);
+      }
+    });
+  }
 };
 
 var unixTimeInSec = function() {
