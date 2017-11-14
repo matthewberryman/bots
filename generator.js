@@ -10,6 +10,8 @@ module.exports.generate = (seed) => {
     "A visiting Toby Jug provenance evaluator",
     "The town's cantankerous children's party planner",
     "A local archaeologist",
+    "A seditious Marxist",
+    "A digital content person",
     "A retired American woman",
     "A lonely librarian",
     "An underappreciated archivist",
@@ -80,6 +82,9 @@ module.exports.generate = (seed) => {
     "quite armless erected as the Venus de Milo",
     "dead in the miniature village",
     "quite lifeless in the Living Museum",
+    "killed in a model village and tied down like Gulliver in Lilliput",
+    "as the life of the party despite being dead several days",
+    "with a crushed skull from an empty coke bottle dropped from a light plane",
     "by local police investigating trouble at the mill",
     "murdered at the suggestion of a singing elevator voice",
     "imprisoned in a vast wicker figure with goats and burned alive",
@@ -306,6 +311,7 @@ module.exports.generate = (seed) => {
       "to publish spoilers for an upcoming episode of Eastenders",
       "to make all the clocks in the city begin to whirr and chime",
       "to make the village do the time warp again",
+      "Europe's most radical meat-based marketing board",
       "to expose a conservative councillor's ownership of a brothel",
       "a further nine seasons of this nonsense" ];
 
