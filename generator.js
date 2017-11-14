@@ -312,6 +312,7 @@ module.exports.generate = (seed) => {
       "to make all the clocks in the city begin to whirr and chime",
       "to make the village do the time warp again",
       "Europe's most radical meat-based marketing board",
+      "to interrupt the Miss Potato and Lamb judging",
       "to expose a conservative councillor's ownership of a brothel",
       "a further nine seasons of this nonsense" ];
 
