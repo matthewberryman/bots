@@ -92,7 +92,7 @@ module.exports.generate = (seed) => {
     "after being 'exercised' to death in a public swimming pool",
     "as the victim of the pure sporting capability of an Aston Martin V12 Vantage S",
     "with rubber balls placed expertly in the eye sockets",
-    "untimely murdered, with the words from Ecclesiastes 12:1-8 (NIV) printed on a piece of paper found in the underpants",
+    "untimely murdered, with the words from Ecclesiastes 12:8 (NIV) printed on a piece of paper found in the underpants",
     "gently extracted by a cold press juicer",
     "quite lifeless in the Living Museum",
     "killed in a model village and tied down like Gulliver in Lilliput",
