@@ -35,6 +35,11 @@ module.exports.get = function(event, context, callback) {
 
 module.exports.post = function(event, context, callback) {
 
+  const response = {
+    statusCode: 200,
+    body: 'Ok'
+  };
+
   const inBody = JSON.parse(event.body);
   var responses = inBody.direct_message_events.length, sent = 0;
   for (var i = 0; i < inBody.direct_message_events.length; i++) {
@@ -57,13 +62,13 @@ module.exports.post = function(event, context, callback) {
       twitter.send_direct_message(body,function(error, response, body) {
         sent++;
         if(sent==responses) {
-          callback(null);
+          callback(null,response);
         }
       });
     } else {
       sent++;
       if(sent==responses) {
-        callback(null);
+        callback(null,response);
       }
     }
   }
