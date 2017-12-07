@@ -6,7 +6,7 @@ var unixTimeInSec = function() {
   return Math.round((new Date()).getTime()/1000);
 };
 
-module.exports.dm_get = function(event, context, callback) {
+module.exports.get = function(event, context, callback) {
 
   console.log(event); // Contains incoming request data (e.g., query params, headers and more)
 
@@ -33,7 +33,7 @@ module.exports.dm_get = function(event, context, callback) {
   }
 };
 
-module.exports.dm_post = function(event, context, callback) {
+module.exports.post = function(event, context, callback) {
 
   const inBody = JSON.parse(event.body);
   var responses = inBody.direct_message_events.length, sent = 0;
