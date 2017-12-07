@@ -38,26 +38,33 @@ module.exports.post = function(event, context, callback) {
   const inBody = JSON.parse(event.body);
   var responses = inBody.direct_message_events.length, sent = 0;
   for (var i = 0; i < inBody.direct_message_events.length; i++) {
-    const outBody =
-    {
-      "event": {
-        "type": "message_create",
-        "message_create": {
-          "target": {
-            "recipient_id": inBody.direct_message_events[i].message_create.target.recipient_id
-          },
-          "message_data": {
-            "text": generator.generate(unixTimeInSec()),
+    if (inBody.direct_message_events[i].message_data.text.includes('plot')) {
+      const outBody =
+      {
+        "event": {
+          "type": "message_create",
+          "message_create": {
+            "target": {
+              "recipient_id": inBody.direct_message_events[i].message_create.target.recipient_id
+            },
+            "message_data": {
+              "text": generator.generate(unixTimeInSec()),
+            }
           }
         }
-      }
-    };
+      };
 
-    twitter.send_direct_message(body,function(error, response, body) {
+      twitter.send_direct_message(body,function(error, response, body) {
+        sent++;
+        if(sent==responses) {
+          callback(null);
+        }
+      });
+    } else {
       sent++;
       if(sent==responses) {
         callback(null);
       }
-    });
+    }
   }
 }
