@@ -2,10 +2,6 @@ var request = require('request')
 
 var twitter = {}
 
-
-// load config
-nconf.file({ file: 'config.json' }).env();
-
 twitter.oauth = {
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
