@@ -60,6 +60,8 @@ module.exports.post = function(event, context, callback) {
       };
 
       twitter.send_direct_message(body,function(error, response, body) {
+        console.log(error);
+        console.log(response);
         sent++;
         if(sent==responses) {
           callback(null,response);
