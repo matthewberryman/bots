@@ -43,7 +43,7 @@ module.exports.post = function(event, context, callback) {
   const inBody = JSON.parse(event.body);
   var responses = inBody.direct_message_events.length, sent = 0;
   for (var i = 0; i < inBody.direct_message_events.length; i++) {
-    if (inBody.direct_message_events[i].message_create.message_data.text.includes('plot')) {
+    if (inBody.direct_message_events[i].message_create.message_data.text.toLowerCase().includes('plot')) {
       const outBody =
       {
         "event": {
