@@ -41,7 +41,7 @@ module.exports.post = function(event, context, callback) {
   };
 
   const inBody = JSON.parse(event.body);
-  var responses = inBody.direct_message_events.length, sent = 0;
+  var responses = inBody.direct_message_events.length, handled = 0;
   for (var i = 0; i < inBody.direct_message_events.length; i++) {
     if (inBody.direct_message_events[i].message_create.message_data.text.toLowerCase().includes('plot')) {
       const outBody =
@@ -60,16 +60,17 @@ module.exports.post = function(event, context, callback) {
       };
 
       twitter.send_direct_message(body,function(error, response, body) {
-        console.log(error);
-        console.log(response);
-        sent++;
-        if(sent==responses) {
+        if (error) {
+          console.log(error);
+        }
+        handled++;
+        if(handled==responses) {
           callback(null,response);
         }
       });
     } else {
-      sent++;
-      if(sent==responses) {
+      handled++;
+      if(handled==responses) {
         callback(null,response);
       }
     }
