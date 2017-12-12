@@ -307,6 +307,8 @@ module.exports.generate = (seed) => {
       "the village fabric",
       "the old inn",
       "the cow farm",
+      "to awaken the giant baby that came before good and evil, being and non-being",
+      "to reveal Amethyst Realm’s 20 ghost lovers to her husband",
       "near-lethal levels of tweeness",
       "the Barnabys' marriage",
       "an annual cricket match that everyone really cares about for some reason",
