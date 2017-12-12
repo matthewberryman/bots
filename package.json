@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "aws-sdk": "^2.166.0",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "serverless-plugin-warmup": "^3.3.0-rc.1"
   }
 }

@@ -13,6 +13,8 @@
 
 service: midsomerplots # NOTE: update this with your service name
 
+plugins:
+  - serverless-plugin-warmup
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -23,6 +25,17 @@ provider:
   runtime: nodejs6.10
   stage: prod
   region: us-east-1
+  iamRoleStatements:
+  - Effect: 'Allow'
+    Action:
+      - 'lambda:InvokeFunction'
+    Resource:
+    - Fn::Join:
+      - ':'
+      - - arn:aws:lambda
+        - Ref: AWS::Region
+        - Ref: AWS::AccountId
+        - function:${self:service}-${opt:stage, self:provider.stage}-*
 
 resources:
   Resources:
@@ -78,6 +91,7 @@ functions:
       TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
 
   twitterDM_get:
+    warmup: true
     handler: twitterDM.get
     events:
       - http:

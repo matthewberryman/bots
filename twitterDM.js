@@ -8,6 +8,11 @@ var unixTimeInSec = function() {
 
 module.exports.get = function(event, context, callback) {
 
+  if (event.source === 'serverless-plugin-warmup') {
+    console.log('WarmUP - Lambda is warm!')
+    return callback(null, 'Lambda is warm!')
+  }
+
   console.log(event); // Contains incoming request data (e.g., query params, headers and more)
 
   var crc_token = event.queryStringParameters.crc_token;
