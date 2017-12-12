@@ -1,13 +1,13 @@
-var request = require('request')
+var request = require('request');
 
-var twitter = {}
+var twitter = {};
 
 twitter.oauth = {
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
   token: process.env.TWITTER_ACCESS_TOKEN,
   token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-}
+};
 
 
 /**
@@ -17,7 +17,7 @@ twitter.oauth = {
  */
 twitter.send_direct_message = function (message_event, callback) {
 
-  console.log('sending message:', message_event.event.message_create.message_data)
+  console.log('sending message:', message_event.event.message_create.message_data);
 
   // request options
   var request_options = {
@@ -28,12 +28,12 @@ twitter.send_direct_message = function (message_event, callback) {
       'content-type': 'application/json'
     },
     body: message_event
-  }
+  };
 
   // POST request to send Direct Message
   request.post(request_options, function (error, response, body) {
     if(callback) {
-      callback(error, response, body)
+      callback(error, response, body);
     }
   })
 }
@@ -48,23 +48,23 @@ function get_user_id() {
   request_options = {
     url: 'https://api.twitter.com/1.1/account/verify_credentials.json',
     oauth: twitter.oauth
-  }
+  };
 
   // get current user info
   request.get(request_options, function (error, response, body) {
 
     if (error) {
-      console.log('Error retreiving user data.')
-      console.log(error)
+      console.log('Error retreiving user data.');
+      console.log(error);
       return;
     }
 
-    var user_id = JSON.parse(body).id_str
-    twitter.user_id = user_id
-  })
+    var user_id = JSON.parse(body).id_str;
+    twitter.user_id = user_id;
+  });
 }
 
-get_user_id()
+get_user_id();
 
 
-module.exports = twitter
+module.exports = twitter;
