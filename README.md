@@ -1,5 +1,5 @@
 # midsomerplot
-Midsomer Murder Plot Generator Twitter bot
+Midsomer Murder Plot Generator [Twitter](https://twitter.com/midsomerplots) and [Facebook](https://facebook.com/midsomerplots) bot.
 
 [Travis CI](https://travis-ci.org/matthewberryman/midsomerplots): [![Build Status](https://travis-ci.org/matthewberryman/midsomerplots.svg?branch=master)](https://travis-ci.org/matthewberryman/midsomerplots)
 
