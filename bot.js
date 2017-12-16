@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk'),
   Twitter = require('twitter'),
+  FB = require('fb'),
   text2png = require('text2png'),
   generator = require('./generator');
 
@@ -11,6 +12,8 @@ const client = new Twitter({
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
+
+FB.setAccessToken(process.env.FACEBOOK_ACCESS_TOKEN);
 
 const pngopt = {
   font: '14px Futura',
@@ -44,6 +47,14 @@ var stringWrap = function (str, width, spaceReplacer) {
 };
 
 var post = function(text) {
+  FB.api(process.env.FACEBOOK_PAGE_ID+'/feed', 'post', { message: text, function (res) {
+    if(!res || res.error) {
+      console.log(!res ? 'FB error occurred' : res.error);
+    } else {
+      console.log('FB Post Id: ' + res.id);
+    }
+  }});
+
   if (text.length>280) {
     client.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
       if (!error) {
