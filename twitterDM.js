@@ -22,7 +22,7 @@ module.exports.get = function(event, context, callback) {
 
     const OKresponse = {
       statusCode: 200,
-      body: JSON.stringify({"response_token":"sha256="+hash})
+      body: JSON.stringify({"response_token": "sha256="+hash})
     };
 
     callback(null, OKresponse);
