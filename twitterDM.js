@@ -40,6 +40,11 @@ module.exports.get = function(event, context, callback) {
 
 module.exports.post = function(event, context, callback) {
 
+  if (event.source === 'serverless-plugin-warmup') {
+    console.log('WarmUP - Lambda is warm!');
+    return callback(null, 'Lambda is warm!');
+  }
+
   const OKresponse = {
     statusCode: 200,
     body: 'Ok'

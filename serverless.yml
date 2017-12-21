@@ -107,6 +107,7 @@ functions:
       TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
 
   twitterDM_post:
+    warmup: true
     handler: twitterDM.post
     events:
       - http:
