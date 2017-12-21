@@ -55,7 +55,7 @@ module.exports.post = function(event, context, callback) {
           "type": "message_create",
           "message_create": {
             "target": {
-              "recipient_id": item.message_create.target.recipient_id
+              "recipient_id": item.message_create.sender_id
             },
             "message_data": {
               "text": generator.generate(unixTimeInSec()),
@@ -63,11 +63,13 @@ module.exports.post = function(event, context, callback) {
           }
         }
       };
+      console.log(outBody);
       twitter.send_direct_message(outBody, function(error, response, body) {
         if (error) {
           console.log(error);
           console.log(body.error);
         }
+        console.log(response);
       });
     }
   });
