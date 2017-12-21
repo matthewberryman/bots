@@ -55,7 +55,7 @@ module.exports.post = function(event, context, callback) {
           "type": "message_create",
           "message_create": {
             "target": {
-              "recipient_id": inBody.direct_message_events[i].message_create.target.recipient_id
+              "recipient_id": item.message_create.target.recipient_id
             },
             "message_data": {
               "text": generator.generate(unixTimeInSec()),
