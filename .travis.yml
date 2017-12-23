@@ -7,7 +7,7 @@ services:
 - docker
 before_install: npm install -g serverless
 install: node docker-npm.js install
-script: npm test && serverless deploy
+script: npm test && serverless deploy --aws-s3-accelerate
 env:
   global:
   - secure: aIt8/GU2ZMQBCf3/1fel9JLQtTYA6zkg8gfvMMKescCkn/XAvTLAnT7HPQuf0KFwe3kNVOlfuA5CIToiEEsF2jyndSyDs461SOJk1fiPxkRK22Xgs4K7rp1WCDottIU5HojEV0y5Ol/1Np4zcSQTTYyTCUt6Igj7tZzvmouvAU8yEujF4h4edFzNMx5/OZT19VxS3WvdWeld3YkAb5uInP/Fs5jtYTU2vyIYAXJzjv+JopiZLAGVtK6VuLIECqEG3mr/hMF963mwNGJj+yO6tB86PlvbWYnv9Aw7jWFG08bJYQUbkskVfGd6j/ZI4ExfuuV0bXxP0X5mc/5ySjtnHMpJu4xJoD2Ip+p6CKbVtYIQJ4TAmKKKPOzUmfrjBjbBqBRR1yZSYBvdwy2OyJAWUJ4zlk0+8VYk5GeRtHsx4kqu75Sl+XU+1VlGz18AjaIxsdX59tq7LhziBr2PwcvxRDZK/cHe7eep8TfNjlMpUgDu7SFlva6GbB4B7f84xC/9ofBoDLiha5cRQuV0rxH4z4EsqIboNv/yRmxvMghRsnYc8SMNCIpis03MO+w4x3lbFg4skfcT3LaXdTb2iwhGhMOWnL3iJrWRmynI4c0JaPoG800tHhQ60Z+gZ4+6G8jlu5oVqRGI7+wJA02SK7LNVrQ+dwC6aoOEMCrHbhUZtWg=
