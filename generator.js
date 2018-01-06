@@ -205,6 +205,7 @@ module.exports.generate = (seed) => {
     "cult leader",
     "prodigal son",
     "gourami appreciation society",
+    "classic and modified car club",
     "chamber of commerce",
     "amateur drama group",
     "shuttlecock appreciation society",
@@ -288,6 +289,7 @@ module.exports.generate = (seed) => {
     "all-encompassing whiteness",
     "the cultural and economic hegemony of Causton",
     "Dutch Elm Disease",
+    "the sale of dogs online",
     "the arrival of a touring pantomime",
     "a planned biography of a deceased local identity" ];
 
@@ -330,6 +332,9 @@ module.exports.generate = (seed) => {
       "a nearby grotto associated with a medieval saint",
       "to set off unexploded bombs from WWII",
       "caravaning",
+      "to ruin their sleepy town",
+      "to close the 160-year-old mustard factory",
+      "pizza deliveries",
       "local hedge maze bylaws",
       "the great bake off",
       "to reveal the secret affairs of the local vicar",
