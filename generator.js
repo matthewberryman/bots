@@ -377,7 +377,7 @@ module.exports.generate = (seed) => {
       "Europe's most radical meat-based marketing board",
       "to interrupt the Miss Potato and Lamb judging",
       "to tell the vicar who his parents really are",
-      "burn every catalogue of London's inter-dimensional gateways",
+      "to burn every catalogue of London's inter-dimensional gateways",
       "the closure of a celebrity-run surgery",
       "to expose a conservative councillor's ownership of a brothel",
       "a further nine seasons of this nonsense" ];
