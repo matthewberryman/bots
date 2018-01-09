@@ -45,6 +45,7 @@ module.exports.generate = (seed) => {
     "A local poacher",
     "A local uncompromising environmentalist",
     "A local inexplicably celebrated poet",
+    "A René Artois lookalike",
     "A local mayor",
     "An embattled councillor",
     "A local spinster",
@@ -83,6 +84,8 @@ module.exports.generate = (seed) => {
   var cause_of_death = [
     "entombed in a statue",
     "bowl'd to death with turnips",
+    "brutally cut down by Britain's most dangerous lawnmower",
+    "murdered in the downstairs hall",
     "sliced up by a machine that uses a hydraulic press to split large logs into perfect firewood with ease",
     "dead with a can of cheap lager inserted into the rectum",
     "driven to suicide by loudly whispered passive aggressive comments regarding the state of their garden",
@@ -373,6 +376,9 @@ module.exports.generate = (seed) => {
       "to make the village do the time warp again",
       "Europe's most radical meat-based marketing board",
       "to interrupt the Miss Potato and Lamb judging",
+      "to tell the vicar who his parents really are",
+      "burn every catalogue of London's inter-dimensional gateways",
+      "the closure of a celebrity-run surgery",
       "to expose a conservative councillor's ownership of a brothel",
       "a further nine seasons of this nonsense" ];
 
