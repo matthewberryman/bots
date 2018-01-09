@@ -379,6 +379,8 @@ module.exports.generate = (seed) => {
       "to tell the vicar who his parents really are",
       "to burn every catalogue of London's inter-dimensional gateways",
       "the closure of a celebrity-run surgery",
+      "to end the price fixing scheme of the local florists",
+      "to reveal that due to an off-by-one error, the meaning of life is actually 43",
       "to expose a conservative councillor's ownership of a brothel",
       "a further nine seasons of this nonsense" ];
 
