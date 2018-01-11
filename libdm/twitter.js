@@ -12,15 +12,16 @@ twitter.oauth = {
 
 /**
  * Sends a Twitter Direct message with POST direct_messages/events/new
- * @param  message_event  valid Direct Message event json
- * @param  callback  function to pass response to
+ * @param {Object} message_event  valid Direct Message event
+ * @param {requestCallback} callback  function to pass response to
+ * @returns {void}
  */
 twitter.send_direct_message = function (message_event, callback) {
 
   console.log('sending message:', message_event.event.message_create.message_data);
 
   // request options
-  var request_options = {
+  let request_options = {
     url: 'https://api.twitter.com/1.1/direct_messages/events/new.json',
     oauth: twitter.oauth,
     json: true,
@@ -35,17 +36,18 @@ twitter.send_direct_message = function (message_event, callback) {
     if(callback) {
       callback(error, response, body);
     }
-  })
-}
+  });
+};
 
 
 /**
  * Retieves user ID for access tokens in config
  * and adds it to twitter object
+ * @returns {void}
  */
 function get_user_id() {
 
-  request_options = {
+  let request_options = {
     url: 'https://api.twitter.com/1.1/account/verify_credentials.json',
     oauth: twitter.oauth
   };
@@ -56,6 +58,7 @@ function get_user_id() {
     if (error) {
       console.log('Error retreiving user data.');
       console.log(error);
+
       return;
     }
 

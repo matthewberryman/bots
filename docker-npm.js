@@ -4,11 +4,9 @@
 
 // requires Docker: https://docs.docker.com/engine/installation/
 
-/*
-Usage:
-  node docker-npm.js install
-  node docker-npm.js rebuild
-*/
+// Usage:
+// node docker-npm.js install
+// node docker-npm.js rebuild
 
 const childProcess = require('child_process');
 

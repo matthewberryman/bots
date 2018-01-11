@@ -2,7 +2,7 @@ const MersenneTwister = require('mersenne-twister');
 
 module.exports.generate = (seed) => {
 
-  mt = new MersenneTwister(seed);
+  let mt = new MersenneTwister(seed);
 
   var murdered_person = [
     "A local bee keeper",
@@ -200,7 +200,7 @@ module.exports.generate = (seed) => {
     "eaten by Cromer crabs",
     "bludgeoned with a croquet mallet",
     "paved into the village thoroughfare",
-    "quilted to death" ];
+    "quilted to death"];
 
   var village_group = [
     "medieval reenactment society",
@@ -253,7 +253,7 @@ module.exports.generate = (seed) => {
     "cosplay society",
     "suspicious out-of-towners",
     "society of Venus watchers",
-    "short-wave radio club" ];
+    "short-wave radio club"];
 
   var angry_at = [
     "parking restrictions",
@@ -303,7 +303,7 @@ module.exports.generate = (seed) => {
     "Dutch Elm Disease",
     "the sale of dogs online",
     "the arrival of a touring pantomime",
-    "a planned biography of a deceased local identity" ];
+    "a planned biography of a deceased local identity"];
 
     var threatened = [
       "the annual cheese festival",
@@ -382,9 +382,9 @@ module.exports.generate = (seed) => {
       "to end the price fixing scheme of the local florists",
       "to reveal that due to an off-by-one error, the meaning of life is actually 43",
       "to expose a conservative councillor's ownership of a brothel",
-      "a further nine seasons of this nonsense" ];
+      "a further nine seasons of this nonsense"];
 
-  var rands = [Math.floor ( mt.random() * murdered_person.length ), Math.floor ( mt.random() * cause_of_death.length ), Math.floor ( mt.random() * village_group.length ), Math.floor ( mt.random() * angry_at.length ), Math.floor ( mt.random() * threatened.length )];
+  var rands = [Math.floor( mt.random() * murdered_person.length ), Math.floor( mt.random() * cause_of_death.length ), Math.floor( mt.random() * village_group.length ), Math.floor( mt.random() * angry_at.length ), Math.floor( mt.random() * threatened.length )];
 
   return murdered_person[rands[0]] + " is found " + cause_of_death[rands[1]] +". Suspicion falls on the village "+ village_group[rands[2]] + ", angry that " + angry_at[rands[3]] + " might threaten " + threatened[rands[4]]+".";
 };

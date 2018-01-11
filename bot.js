@@ -25,44 +25,51 @@ const pngopt = {
 
 
 var truncate = function(string) {
-   if (string.length > 280)
-      return string.substring(0,string.lastIndexOf(' ',277))+'...';
-   else
-      return string;
+   if (string.length > 280) {
+     return string.substring(0,string.lastIndexOf(' ',277))+'...';
+   }
+
+   return string;
 };
 
 // stringWrap function from http://stackoverflow.com/posts/14502311/revisions
 var stringWrap = function (str, width, spaceReplacer) {
     if (str.length>width) {
-        var p=width;
-        for (;p>0 && str[p]!=' ';p--) {
+        let p=width;
+        for (;p>0 && str[p]!=' '; p--) {
+          // eslint-disable-line no-empty
         }
         if (p>0) {
-            var left = str.substring(0, p);
-            var right = str.substring(p+1);
+            let left = str.substring(0, p);
+            let right = str.substring(p+1);
+
             return left + spaceReplacer + stringWrap(right, width, spaceReplacer);
         }
     }
+
     return str;
 };
 
 var post = function(text) {
-  FB.api(process.env.FACEBOOK_PAGE_ID+'/feed', 'post', { message: text, function (res) {
-    if(!res || res.error) {
-      console.log(!res ? 'FB error occurred' : res.error);
-    } else {
-      console.log('FB Post Id: ' + res.id);
-    }
+  FB.api(process.env.FACEBOOK_PAGE_ID+'/feed', 'post', { message: text,
+    function (res) {
+      if(!res || res.error) { // eslint-disable-line no-negated-condition
+        console.log(!res ? 'FB error occurred' : res.error); // eslint-disable-line no-negated-condition
+      } else {
+        console.log('FB Post Id: ' + res.id);
+      }
   }});
 
   if (text.length>280) {
     client.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
+      console.log(response);
       if (!error) {
         var status = {
           status: truncate(text) ,
           media_ids: media.media_id_string // Pass the media id string
         };
         client.post('statuses/update', status, function(error, tweet, response) {
+          console.log(response);
           if (!error) {
             console.log(tweet);
           }
@@ -77,6 +84,7 @@ var post = function(text) {
       if (!error) {
         console.log(tweet);
       }
+      console.log(response);
     });
   }
 };
@@ -93,6 +101,7 @@ module.exports.tweet = (event, context, callback) => {
     MaxNumberOfMessages: 1,
     MessageAttributeNames: [
       "seed",
+
       /* more items */
     ],
     VisibilityTimeout: 5
@@ -108,6 +117,7 @@ module.exports.tweet = (event, context, callback) => {
     };
     sqs.deleteMessage(params).promise().then(function(data) {
       post(generator.generate(seed));
+      console.log(data);
     })
     .catch(function(err) {
       post(generator.generate(unixTimeInSec()));

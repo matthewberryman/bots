@@ -5,7 +5,7 @@ describe("Text generator", function() {
 
   it("generates a string", function() {
     var generated_string = generator.generate(null);
-    expect(typeof(generated_string)==='string' && generated_string.length > 0);
+    expect(typeof (generated_string)==='string' && generated_string.length > 0);
   });
 
   it("generates same string for same seed", function() {
