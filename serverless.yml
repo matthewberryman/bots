@@ -61,8 +61,8 @@ resources:
             AttributeName: id
             KeyType: HASH
         ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
+          ReadCapacityUnits: 2
+          WriteCapacityUnits: 2
         TableName: midsomerplots
     midsomerSQSRole:
       Type: AWS::IAM::Role
