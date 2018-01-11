@@ -59,7 +59,7 @@ module.exports.post = function(event, context, callback) {
     let getParams = {
       TableName: process.env.DYNAMODB_TABLE,
       Key: {
-        id: item.id,
+        id: Number(item.id),
       },
     };
 
@@ -70,8 +70,9 @@ module.exports.post = function(event, context, callback) {
         callback(null, error);
       } else if (isEmpty(result)) {
           let putParams = {
+            TableName: process.env.DYNAMODB_TABLE,
             Item: {
-              id: item.id
+              id: Number(item.id)
             }
           };
           dynamoDB.put(putParams, (error) => {
