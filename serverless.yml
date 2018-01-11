@@ -26,6 +26,15 @@ provider:
   stage: prod
   region: us-east-1
   iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/midsomerplots"
   - Effect: 'Allow'
     Action:
       - 'lambda:InvokeFunction'
@@ -39,6 +48,22 @@ provider:
 
 resources:
   Resources:
+    MidsomerMurdersDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: N
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: midsomerplots
     midsomerSQSRole:
       Type: AWS::IAM::Role
       Properties:
@@ -119,3 +144,4 @@ functions:
       TWITTER_CONSUMER_SECRET: ${env:TWITTER_CONSUMER_SECRET}
       TWITTER_ACCESS_TOKEN_KEY: ${env:TWITTER_ACCESS_TOKEN_KEY}
       TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
+      DYNAMODB_TABLE: midsomerplots

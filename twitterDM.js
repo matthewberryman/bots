@@ -1,9 +1,15 @@
 const security = require('libdm/security');
 const twitter = require('libdm/twitter');
 const generator = require('./generator');
+const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
+const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 var unixTimeInSec = function() {
   return Math.round((new Date()).getTime()/1000);
+};
+
+var isEmpty = function(obj) {
+  return Object.keys(obj).length === 0 && obj.constructor === Object;
 };
 
 module.exports.get = function(event, context, callback) {
@@ -40,44 +46,71 @@ module.exports.get = function(event, context, callback) {
 
 module.exports.post = function(event, context, callback) {
 
-  if (event.source === 'serverless-plugin-warmup') {
-    console.log('WarmUP - Lambda is warm!');
-    return callback(null, 'Lambda is warm!');
-  }
-
   const OKresponse = {
     statusCode: 200,
     body: 'Ok'
   };
 
-  const inBody = JSON.parse(event.body);
+  let inBody = JSON.parse(event.body);
 
   var calls = inBody.direct_message_events.map(function callback(item) {
-    if (item.message_create.message_data.text.toLowerCase().includes('redrum')) {
-      const outBody =
-      {
-        "event": {
-          "type": "message_create",
-          "message_create": {
-            "target": {
-              "recipient_id": item.message_create.sender_id
-            },
-            "message_data": {
-              "text": generator.generate(unixTimeInSec()),
+
+    let getParams = {
+      TableName: process.env.DYNAMODB_TABLE,
+      Key: {
+        id: item.id,
+      },
+    };
+
+    dynamoDB.get(params, (error, result) => {
+      // handle potential errors
+      if (error) {
+        console.error(error);
+        callback(null, error);
+      } else {
+        if (isEmpty) {
+          let putParams = {
+            Item: {
+              id: eventId
             }
-          }
+          };
+          dynamoDB.put(putParams, (error) => {
+            // handle potential errors
+            if (error) {
+              console.error(error);
+              callback(null, error);
+            } else {
+              if (item.message_create.message_data.text.toLowerCase().includes('redrum')) {
+                let outBody =
+                {
+                  "event": {
+                    "type": "message_create",
+                    "message_create": {
+                      "target": {
+                        "recipient_id": item.message_create.sender_id
+                      },
+                      "message_data": {
+                        "text": generator.generate(unixTimeInSec()),
+                      }
+                    }
+                  }
+                };
+                console.log(outBody);
+                twitter.send_direct_message(outBody, function(error, response, body) {
+                  if (error) {
+                    console.log(error);
+                    console.log(body.error);
+                  }
+                  console.log(response);
+                });
+              }
+            }
+          });
         }
-      };
-      console.log(outBody);
-      twitter.send_direct_message(outBody, function(error, response, body) {
-        if (error) {
-          console.log(error);
-          console.log(body.error);
-        }
-        console.log(response);
-      });
-    }
+      }
+    });
   });
+
 
   Promise.all(calls).then( () => {
     callback(null,OKresponse);
