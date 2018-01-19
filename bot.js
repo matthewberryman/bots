@@ -13,7 +13,7 @@ const client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-FB.setAccessToken(process.env.FACEBOOK_ACCESS_TOKEN);
+FB.options({timeout: 2000, accessToken: process.env.FACEBOOK_ACCESS_TOKEN});
 
 const pngopt = {
   font: '14px Futura',
