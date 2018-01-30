@@ -2,6 +2,5 @@ language: node_js
 node_js: '6.10'
 services:
 - docker
-before_install: npm install
 install: node docker-npm.js install
 script: npm test
