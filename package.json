@@ -26,9 +26,9 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "aws-sdk": "^2.169.0",
-    "mocha": "^4.0.1",
-    "eslint": "^4.15.0",
+    "aws-sdk": "^2.197.0",
+    "mocha": "^5.0.1",
+    "eslint": "^4.18.0",
     "serverless-plugin-warmup": "^3.3.0-rc.1"
   }
 }
