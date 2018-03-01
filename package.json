@@ -22,13 +22,13 @@
     "fb": "^2.0.0",
     "mersenne-twister": "^1.1.0",
     "request": "^2.83.0",
-    "text2png": "^1.0.1",
+    "text2png": "^1.1.0",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "aws-sdk": "^2.197.0",
+    "aws-sdk": "^2.205.0",
     "mocha": "^5.0.1",
-    "eslint": "^4.18.0",
-    "serverless-plugin-warmup": "^3.3.0-rc.1"
+    "eslint": "^4.18.1",
+    "serverless-plugin-warmup": "^3.4.0-rc.1"
   }
 }
