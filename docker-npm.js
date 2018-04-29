@@ -10,7 +10,7 @@
 
 const childProcess = require('child_process');
 
-const nodejsImage = 'node:6.10';
+const nodejsImage = 'node:8';
 const innerWorkingDir = '/src';
 const dockerArgs = [
   'run', '-i',

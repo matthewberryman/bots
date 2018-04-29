@@ -21,13 +21,13 @@
     "chai": "^4.1.2",
     "fb": "^2.0.0",
     "mersenne-twister": "^1.1.0",
-    "request": "^2.83.0",
-    "text2png": "^1.1.0",
+    "request": "^2.85.0",
+    "text2png": "^1.1.1",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "mocha": "^5.0.4",
-    "eslint": "^4.18.2",
-    "serverless-plugin-warmup": "^3.4.0-rc.1"
+    "mocha": "^5.1.1",
+    "eslint": "^4.19.1",
+    "serverless-plugin-warmup": "^3.6.1-rc.1"
   }
 }
