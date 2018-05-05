@@ -4,8 +4,6 @@ const AWS = require('aws-sdk'),
   text2png = require('text2png'),
   generator = require('./generator');
 
-let client;
-
 const secretsmanager = new AWS.SecretsManager();
 
 const pngopt = {
@@ -43,8 +41,8 @@ var stringWrap = function (str, width, spaceReplacer) {
     return str;
 };
 
-var post = function(text) {
-  FB.api(process.env.FACEBOOK_PAGE_ID+'/feed', 'post', { message: text,
+var post = function(text, FBpageId, TwitterClient, ) {
+  FB.api(FBpageId+'/feed', 'post', { message: text,
     function (res) {
       if(!res || res.error) { // eslint-disable-line no-negated-condition
         console.log(!res ? 'FB error occurred' : res.error); // eslint-disable-line no-negated-condition
@@ -54,14 +52,14 @@ var post = function(text) {
   }});
 
   if (text.length>280) {
-    client.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
+    TwitterClient.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
       console.log(response);
       if (!error) {
         var status = {
           status: truncate(text) ,
           media_ids: media.media_id_string // Pass the media id string
         };
-        client.post('statuses/update', status, function(error, tweet, response) {
+        TwitterClient.post('statuses/update', status, function(error, tweet, response) {
           console.log(response);
           if (!error) {
             console.log(tweet);
@@ -73,7 +71,7 @@ var post = function(text) {
     var status = {
       status: text
     };
-    client.post('statuses/update', status, function(error, tweet, response) {
+    TwitterClient.post('statuses/update', status, function(error, tweet, response) {
       if (!error) {
         console.log(tweet);
       }
@@ -86,28 +84,20 @@ var unixTimeInSec = function() {
   return Math.round((new Date()).getTime()/1000);
 };
 
-async function loadConfig() {
+module.exports.tweet = async (event, context, callback) => {
+
   try {
     let configString = await secretsmanager.getSecretValue({'SecretId':'midsomerplots'}).promise();
     let config = JSON.parse(configString);
-    client = new Twitter({
-     consumer_key: config.TWITTER_CONSUMER_KEY,
-     consumer_secret: config.TWITTER_CONSUMER_SECRET,
-     access_token_key: config.TWITTER_ACCESS_TOKEN_KEY,
-     access_token_secret: config.TWITTER_ACCESS_TOKEN_SECRET
-    });
+
     FB.options({timeout: 2000, accessToken: config.FACEBOOK_ACCESS_TOKEN});
 
-    return config;
-  } catch(e) {
-    return null;
-  }
-}
-
-module.exports.tweet = (event, context, callback) => {
-
-  let config = loadConfig();
-  if (config) {
+    const client = new Twitter({
+         consumer_key: config.TWITTER_CONSUMER_KEY,
+         consumer_secret: config.TWITTER_CONSUMER_SECRET,
+         access_token_key: config.TWITTER_ACCESS_TOKEN_KEY,
+         access_token_secret: config.TWITTER_ACCESS_TOKEN_SECRET
+        });
     const sqs = new AWS.SQS();
     const params = {
       QueueUrl: config.SQS_QUEUE_URL, /* required */
@@ -129,11 +119,11 @@ module.exports.tweet = (event, context, callback) => {
         ReceiptHandle: data.Messages[0].ReceiptHandle
       };
       sqs.deleteMessage(params).promise().then(function(data) {
-        post(generator.generate(seed));
+        post(generator.generate(seed),config.FACEBOOK_PAGE_ID,client);
         console.log(data);
       })
       .catch(function(err) {
-        post(generator.generate(unixTimeInSec()));
+        post(generator.generate(unixTimeInSec()),config.FACEBOOK_PAGE_ID,client);
         console.log(err);
       });
     }).catch(function(err) {
@@ -141,7 +131,7 @@ module.exports.tweet = (event, context, callback) => {
       console.log(err);
     });
     callback(null, { message: 'Bot tweeted successfully!', event });
-  } else {
+  } catch(e) {
     callback(null, {message: 'Credentials not loaded'});
   }
 };
