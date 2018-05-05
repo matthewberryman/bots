@@ -6,14 +6,21 @@ const AWS = require('aws-sdk'),
 
 AWS.config.update({region: 'us-east-1'});
 
-const client = new Twitter({
-  consumer_key: process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-});
+let client;
 
-FB.options({timeout: 2000, accessToken: process.env.FACEBOOK_ACCESS_TOKEN});
+try {
+  let configString = await secretsmanager.getSecretValue({'SecretId':'midsomerplots'}).promise();
+  let config = JSON.parse(configString);
+  client = new Twitter({
+   consumer_key: config.TWITTER_CONSUMER_KEY,
+   consumer_secret: config.TWITTER_CONSUMER_SECRET,
+   access_token_key: config.TWITTER_ACCESS_TOKEN_KEY,
+   access_token_secret: config.TWITTER_ACCESS_TOKEN_SECRET
+  });
+  FB.options({timeout: 2000, accessToken: config.FACEBOOK_ACCESS_TOKEN});
+} catch(e) {
+  config = null;
+}
 
 const pngopt = {
   font: '14px Futura',
@@ -95,37 +102,41 @@ var unixTimeInSec = function() {
 
 module.exports.tweet = (event, context, callback) => {
 
-  var sqs = new AWS.SQS();
-  var params = {
-    QueueUrl: process.env.SQS_QUEUE_URL, /* required */
-    MaxNumberOfMessages: 1,
-    MessageAttributeNames: [
-      "seed",
+  if (config) {
+    const sqs = new AWS.SQS();
+    const params = {
+      QueueUrl: config.SQS_QUEUE_URL, /* required */
+      MaxNumberOfMessages: 1,
+      MessageAttributeNames: [
+        "seed",
 
-      /* more items */
-    ],
-    VisibilityTimeout: 5
-  };
-
-  sqs.receiveMessage(params).promise().then(function(data) {
-    var SQSseed = Number(data.Messages[0].MessageAttributes.seed.StringValue);
-    var seed = SQSseed < 0 ? SQSseed + unixTimeInSec()
-      : SQSseed - unixTimeInSec();
-    var params = {
-      QueueUrl: process.env.SQS_QUEUE_URL, /* required */
-      ReceiptHandle: data.Messages[0].ReceiptHandle
+        /* more items */
+      ],
+      VisibilityTimeout: 5
     };
-    sqs.deleteMessage(params).promise().then(function(data) {
-      post(generator.generate(seed));
-      console.log(data);
-    })
-    .catch(function(err) {
+
+    sqs.receiveMessage(params).promise().then(function(data) {
+      var SQSseed = Number(data.Messages[0].MessageAttributes.seed.StringValue);
+      var seed = SQSseed < 0 ? SQSseed + unixTimeInSec()
+        : SQSseed - unixTimeInSec();
+      var params = {
+        QueueUrl: process.env.SQS_QUEUE_URL, /* required */
+        ReceiptHandle: data.Messages[0].ReceiptHandle
+      };
+      sqs.deleteMessage(params).promise().then(function(data) {
+        post(generator.generate(seed));
+        console.log(data);
+      })
+      .catch(function(err) {
+        post(generator.generate(unixTimeInSec()));
+        console.log(err);
+      });
+    }).catch(function(err) {
       post(generator.generate(unixTimeInSec()));
       console.log(err);
     });
-  }).catch(function(err) {
-    post(generator.generate(unixTimeInSec()));
-    console.log(err);
-  });
-  callback(null, { message: 'Bot tweeted successfully!', event });
+    callback(null, { message: 'Bot tweeted successfully!', event });
+  } else {
+    callback(null, {message: 'Credentials not loaded', event});
+  }
 };
