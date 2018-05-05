@@ -8,6 +8,8 @@ AWS.config.update({region: 'us-east-1'});
 
 let client;
 
+const secretsmanager = new AWS.SecretsManager();
+
 try {
   let configString = await secretsmanager.getSecretValue({'SecretId':'midsomerplots'}).promise();
   let config = JSON.parse(configString);
