@@ -4,8 +4,6 @@ const AWS = require('aws-sdk'),
   text2png = require('text2png'),
   generator = require('./generator');
 
-AWS.config.update({region: 'us-east-1'});
-
 let client;
 
 const secretsmanager = new AWS.SecretsManager();
