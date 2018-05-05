@@ -88,7 +88,7 @@ module.exports.tweet = async (event, context, callback) => {
 
   try {
     let data = await secretsmanager.getSecretValue({'SecretId':'midsomerplots'}).promise();
-    let config = JSON.parse(data.configString);
+    let config = JSON.parse(data.secretString);
 
     FB.options({timeout: 2000, accessToken: config.FACEBOOK_ACCESS_TOKEN});
 
