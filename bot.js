@@ -10,20 +10,6 @@ let client;
 
 const secretsmanager = new AWS.SecretsManager();
 
-try {
-  let configString = await secretsmanager.getSecretValue({'SecretId':'midsomerplots'}).promise();
-  let config = JSON.parse(configString);
-  client = new Twitter({
-   consumer_key: config.TWITTER_CONSUMER_KEY,
-   consumer_secret: config.TWITTER_CONSUMER_SECRET,
-   access_token_key: config.TWITTER_ACCESS_TOKEN_KEY,
-   access_token_secret: config.TWITTER_ACCESS_TOKEN_SECRET
-  });
-  FB.options({timeout: 2000, accessToken: config.FACEBOOK_ACCESS_TOKEN});
-} catch(e) {
-  config = null;
-}
-
 const pngopt = {
   font: '14px Futura',
   textColor: 'teal',
@@ -102,8 +88,27 @@ var unixTimeInSec = function() {
   return Math.round((new Date()).getTime()/1000);
 };
 
+async function loadConfig() {
+  try {
+    let configString = await secretsmanager.getSecretValue({'SecretId':'midsomerplots'}).promise();
+    let config = JSON.parse(configString);
+    client = new Twitter({
+     consumer_key: config.TWITTER_CONSUMER_KEY,
+     consumer_secret: config.TWITTER_CONSUMER_SECRET,
+     access_token_key: config.TWITTER_ACCESS_TOKEN_KEY,
+     access_token_secret: config.TWITTER_ACCESS_TOKEN_SECRET
+    });
+    FB.options({timeout: 2000, accessToken: config.FACEBOOK_ACCESS_TOKEN});
+
+    return config;
+  } catch(e) {
+    return null;
+  }
+}
+
 module.exports.tweet = (event, context, callback) => {
 
+  let config = loadConfig();
   if (config) {
     const sqs = new AWS.SQS();
     const params = {
@@ -139,6 +144,6 @@ module.exports.tweet = (event, context, callback) => {
     });
     callback(null, { message: 'Bot tweeted successfully!', event });
   } else {
-    callback(null, {message: 'Credentials not loaded', event});
+    callback(null, {message: 'Credentials not loaded'});
   }
 };

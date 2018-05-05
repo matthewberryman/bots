@@ -1,7 +1,11 @@
 {
     "env": {
-        "es6": true,
-        "node": true
+        "node": true,
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": "module"
     },
     "extends": "eslint:recommended",
     "rules": {
@@ -115,7 +119,7 @@
         "no-caller": "error",
         "no-catch-shadow": "error",
         "no-confusing-arrow": "error",
-	"no-console": "off",
+	      "no-console": "off",
         "no-continue": "error",
         "no-div-regex": "error",
         "no-duplicate-imports": "error",
