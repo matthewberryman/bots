@@ -87,8 +87,8 @@ var unixTimeInSec = function() {
 module.exports.tweet = async (event, context, callback) => {
 
   try {
-    let configString = await secretsmanager.getSecretValue({'SecretId':'midsomerplots'}).promise();
-    let config = JSON.parse(configString);
+    let data = await secretsmanager.getSecretValue({'SecretId':'midsomerplots'}).promise();
+    let config = JSON.parse(data.configString);
 
     FB.options({timeout: 2000, accessToken: config.FACEBOOK_ACCESS_TOKEN});
 
@@ -132,6 +132,7 @@ module.exports.tweet = async (event, context, callback) => {
     });
     callback(null, { message: 'Bot tweeted successfully!', event });
   } catch(e) {
+    console.log(e);
     callback(null, e);
   }
 };
