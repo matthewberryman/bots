@@ -41,7 +41,7 @@ var stringWrap = function (str, width, spaceReplacer) {
     return str;
 };
 
-var post = function(text, FBpageId, TwitterClient, ) {
+var post = function(text, FBpageId, TwitterClient) {
   FB.api(FBpageId+'/feed', 'post', { message: text,
     function (res) {
       if(!res || res.error) { // eslint-disable-line no-negated-condition
