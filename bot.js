@@ -132,6 +132,6 @@ module.exports.tweet = async (event, context, callback) => {
     });
     callback(null, { message: 'Bot tweeted successfully!', event });
   } catch(e) {
-    callback(null, {e});
+    callback(null, e);
   }
 };
