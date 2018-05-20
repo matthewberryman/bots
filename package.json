@@ -21,12 +21,12 @@
     "chai": "^4.1.2",
     "fb": "^2.0.0",
     "mersenne-twister": "^1.1.0",
-    "request": "^2.85.0",
+    "request": "^2.86.0",
     "text2png": "^1.1.1",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "mocha": "^5.1.1",
+    "mocha": "^5.2.0",
     "eslint": "^4.19.1",
     "serverless-plugin-warmup": "^3.6.1-rc.1"
   }
