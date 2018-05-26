@@ -56,9 +56,6 @@ resources:
           -
             AttributeName: id
             AttributeType: N
-          -
-            AttributeName: ttl
-            AttributeType: N
         KeySchema:
           -
             AttributeName: id
