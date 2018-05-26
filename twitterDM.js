@@ -73,7 +73,8 @@ module.exports.post = function(event, context, callback) {
           let putParams = {
             TableName: process.env.DYNAMODB_TABLE,
             Item: {
-              id: Number(item.id)
+              id: Number(item.id),
+              ttl: Math.floor(Date.now() / 1000)+3600
             }
           };
           dynamoDB.put(putParams, (error) => {
