@@ -21,7 +21,7 @@
     "chai": "^4.1.2",
     "fb": "^2.0.0",
     "mersenne-twister": "^1.1.0",
-    "request": "^2.86.0",
+    "request": "^2.87.0",
     "text2png": "^1.1.1",
     "twitter": "^1.7.1"
   },
