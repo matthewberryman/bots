@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk'),
   Twitter = require('twitter'),
+  Mastodon = require('megalodon'),
   FB = require('fb'),
   text2png = require('text2png'),
   generator = require('./generator');
@@ -41,7 +42,7 @@ var stringWrap = function (str, width, spaceReplacer) {
     return str;
 };
 
-var post = function(text, FBpageId, TwitterClient) {
+var post = function(text, FBpageId, TwitterClient, MastodonClient) {
   FB.api(FBpageId+'/feed', 'post', { message: text,
     function (res) {
       if(!res || res.error) { // eslint-disable-line no-negated-condition
@@ -50,6 +51,15 @@ var post = function(text, FBpageId, TwitterClient) {
         console.log('FB Post Id: ' + res.id);
       }
   }});
+
+  MastodonClient.post('/statuses', {
+      status: text
+    }).then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
 
   if (text.length>280) {
     TwitterClient.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
@@ -93,12 +103,17 @@ module.exports.tweet = async (event, context, callback) => {
 
     FB.options({timeout: 2000, accessToken: config.FACEBOOK_ACCESS_TOKEN});
 
-    const client = new Twitter({
+    const TwitterClient = new Twitter({
          consumer_key: config.TWITTER_CONSUMER_KEY,
          consumer_secret: config.TWITTER_CONSUMER_SECRET,
          access_token_key: config.TWITTER_ACCESS_TOKEN_KEY,
          access_token_secret: config.TWITTER_ACCESS_TOKEN_SECRET
         });
+
+    const MastodonClient = new Mastodon(
+      config.MASTODON_ACCESS_TOKEN,
+      'https://mastodon.cloud' + '/api/v1'
+    );
     const sqs = new AWS.SQS();
     const params = {
       QueueUrl: config.SQS_QUEUE_URL, /* required */
@@ -120,11 +135,11 @@ module.exports.tweet = async (event, context, callback) => {
         ReceiptHandle: data.Messages[0].ReceiptHandle
       };
       sqs.deleteMessage(params).promise().then(function(data) {
-        post(generator.generate(seed),config.FACEBOOK_PAGE_ID,client);
+        post(generator.generate(seed),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
         console.log(data);
       })
       .catch(function(err) {
-        post(generator.generate(unixTimeInSec()),config.FACEBOOK_PAGE_ID,client);
+        post(generator.generate(unixTimeInSec()),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
         console.log(err);
       });
     }).catch(function(err) {

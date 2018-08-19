@@ -20,6 +20,7 @@
   "dependencies": {
     "chai": "^4.1.2",
     "fb": "^2.0.0",
+    "megalodon": "^0.3.0",
     "mersenne-twister": "^1.1.0",
     "request": "^2.87.0",
     "text2png": "^1.1.1",
