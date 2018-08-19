@@ -54,7 +54,7 @@ var post = function(text, FBpageId, TwitterClient, MastodonClient) {
 
   MastodonClient.post('/statuses', {
       status: text,
-      spoiler_text: '#murderplot'
+      spoiler_text: '#midsomermurdersplot'
     }).then((res) => {
         console.log(res);
       })
