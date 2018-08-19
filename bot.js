@@ -1,6 +1,6 @@
 const AWS = require('aws-sdk'),
   Twitter = require('twitter'),
-  Mastodon = require('megalodon'),
+  Mastodon = require('megalodon/lib/mastodon'),
   FB = require('fb'),
   text2png = require('text2png'),
   generator = require('./generator');
