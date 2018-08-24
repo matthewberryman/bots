@@ -52,7 +52,7 @@ module.exports.post = function(event, context, callback) {
     body: 'Ok'
   };
 
-  console.log(event.body);
+  console.log(event);
   let inBody = JSON.parse(event.body);
 
   var calls = inBody.direct_message_events.forEach(function(item) {
