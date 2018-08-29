@@ -121,32 +121,3 @@ functions:
       TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
       FACEBOOK_PAGE_ID: ${env:FACEBOOK_PAGE_ID}
       FACEBOOK_ACCESS_TOKEN: ${env:FACEBOOK_ACCESS_TOKEN}
-
-  twitterDM_get:
-    warmup: true
-    handler: twitterDM.get
-    events:
-      - http:
-          path: twitter/webhook
-          method: get
-          cors: true
-    environment:
-      TWITTER_CONSUMER_KEY: ${env:TWITTER_CONSUMER_KEY}
-      TWITTER_CONSUMER_SECRET: ${env:TWITTER_CONSUMER_SECRET}
-      TWITTER_ACCESS_TOKEN_KEY: ${env:TWITTER_ACCESS_TOKEN_KEY}
-      TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
-
-  twitterDM_post:
-    warmup: true
-    handler: twitterDM.post
-    events:
-      - http:
-          path: twitter/webhook
-          method: post
-          cors: true
-    environment:
-      TWITTER_CONSUMER_KEY: ${env:TWITTER_CONSUMER_KEY}
-      TWITTER_CONSUMER_SECRET: ${env:TWITTER_CONSUMER_SECRET}
-      TWITTER_ACCESS_TOKEN_KEY: ${env:TWITTER_ACCESS_TOKEN_KEY}
-      TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
-      DYNAMODB_TABLE: midsomerplots
