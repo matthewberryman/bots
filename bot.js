@@ -3,7 +3,7 @@ const AWS = require('aws-sdk'),
   Mastodon = require('megalodon/lib/mastodon'),
   FB = require('fb'),
   text2png = require('text2png'),
-  generator = require('./generator');
+  midsomerplots = require('midsomermurderplots');
 
 const secretsmanager = new AWS.SecretsManager();
 
@@ -136,15 +136,15 @@ module.exports.tweet = async (event, context, callback) => {
         ReceiptHandle: data.Messages[0].ReceiptHandle
       };
       sqs.deleteMessage(params).promise().then(function(data) {
-        post(generator.generate(seed),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
+        post(midsomerplots.generate(seed),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
         console.log(data);
       })
       .catch(function(err) {
-        post(generator.generate(unixTimeInSec()),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
+        post(midsomerplots.generate(unixTimeInSec()),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
         console.log(err);
       });
     }).catch(function(err) {
-      post(generator.generate(unixTimeInSec()));
+      post(midsomerplots.generate(unixTimeInSec()));
       console.log(err);
     });
     callback(null, { message: 'Bot tweeted successfully!', event });

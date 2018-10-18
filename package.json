@@ -5,7 +5,7 @@
   "description": "Midsomer Murder Plot generator",
   "main": "bot.js",
   "scripts": {
-    "test": "mocha && eslint .",
+    "test": "eslint .",
     "deploy": "serverless deploy"
   },
   "repository": {
@@ -18,16 +18,15 @@
   },
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
-    "chai": "^4.1.2",
     "fb": "^2.0.0",
     "megalodon": "^0.3.0",
     "mersenne-twister": "^1.1.0",
+    "midsomermurderplots": "github:matthewberryman/midsomerplots-content",
     "request": "^2.87.0",
     "text2png": "^1.1.1",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "mocha": "^5.2.0",
     "eslint": "^4.19.1",
     "serverless-plugin-warmup": "^3.6.1-rc.1"
   }

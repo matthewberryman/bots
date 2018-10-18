@@ -1,6 +1,6 @@
 const security = require('libdm/security');
 const twitter = require('libdm/twitter');
-const generator = require('./generator');
+const midsomerplots = require('midsomermurderplots');
 const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
@@ -92,7 +92,7 @@ module.exports.post = function(event, context, callback) {
                         "recipient_id": item.message_create.sender_id
                       },
                       "message_data": {
-                        "text": generator.generate(unixTimeInSec()),
+                        "text": midsomerplots.generate(unixTimeInSec()),
                       }
                     }
                   }
