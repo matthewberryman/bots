@@ -21,7 +21,7 @@
     "fb": "^2.0.0",
     "megalodon": "^0.3.0",
     "mersenne-twister": "^1.1.0",
-    "midsomermurderplots": "github:matthewberryman/midsomerplots-content",
+    "midsomerplots-content": "github:matthewberryman/midsomerplots-content",
     "request": "^2.87.0",
     "text2png": "^1.1.1",
     "twitter": "^1.7.1"

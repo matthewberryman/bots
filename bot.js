@@ -3,7 +3,7 @@ const AWS = require('aws-sdk'),
   Mastodon = require('megalodon/lib/mastodon'),
   FB = require('fb'),
   text2png = require('text2png'),
-  midsomerplots = require('midsomermurderplots');
+  midsomerplots = require('midsomerplots-content');
 
 const secretsmanager = new AWS.SecretsManager();
 
