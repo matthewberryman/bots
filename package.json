@@ -19,15 +19,15 @@
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
     "fb": "^2.0.0",
-    "megalodon": "^0.3.0",
+    "megalodon": "^0.4.4",
     "mersenne-twister": "^1.1.0",
     "midsomerplots-content": "github:matthewberryman/midsomerplots-content",
-    "request": "^2.87.0",
-    "text2png": "^1.1.1",
+    "request": "^2.88.0",
+    "text2png": "^2.1.0",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "serverless-plugin-warmup": "^3.6.1-rc.1"
+    "eslint": "^5.9.0",
+    "serverless-plugin-warmup": "^4.1.0-rc.1"
   }
 }
