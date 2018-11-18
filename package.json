@@ -28,6 +28,6 @@
   },
   "devDependencies": {
     "eslint": "^5.9.0",
-    "serverless-plugin-warmup": "^4.1.0-rc.1"
+    "serverless-plugin-warmup": "^4.2.0-rc.1"
   }
 }
