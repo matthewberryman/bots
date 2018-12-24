@@ -19,7 +19,7 @@
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
     "fb": "^2.0.0",
-    "megalodon": "^0.4.5",
+    "megalodon": "^0.4.6",
     "mersenne-twister": "^1.1.0",
     "midsomerplots-content": "github:matthewberryman/midsomerplots-content",
     "request": "^2.88.0",
@@ -27,7 +27,7 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
+    "eslint": "^5.11.0",
     "serverless-plugin-warmup": "^4.2.0-rc.1"
   }
 }
