@@ -27,7 +27,7 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "eslint": "^5.11.0",
+    "eslint": "^5.11.1",
     "serverless-plugin-warmup": "^4.2.0-rc.1"
   }
 }
