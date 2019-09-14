@@ -7,23 +7,6 @@ const AWS = require('aws-sdk'),
 
 const secretsmanager = new AWS.SecretsManager();
 
-const pngopt = {
-  font: '14px Futura',
-  textColor: 'teal',
-  bgColor: 'linen',
-  lineSpacing: 8,
-  padding: 25
-};
-
-
-var truncate = function(string) {
-   if (string.length > 280) {
-     return string.substring(0,string.lastIndexOf(' ',277))+'...';
-   }
-
-   return string;
-};
-
 // stringWrap function from http://stackoverflow.com/posts/14502311/revisions
 var stringWrap = function (str, width, spaceReplacer) {
     if (str.length>width) {
@@ -42,7 +25,11 @@ var stringWrap = function (str, width, spaceReplacer) {
     return str;
 };
 
-var post = function(text, FBpageId, TwitterClient, MastodonClient) {
+var post = function(seed, FBpageId, TwitterClient, MastodonClient) {
+  let text = midsomerplots.generate(seed);
+  while (text.length > 280) {
+    text = midsomerplots.generate(unixTimeInSec());
+  }
   FB.api(FBpageId+'/feed', 'post', { message: text,
     function (res) {
       if(!res || res.error) { // eslint-disable-line no-negated-condition
@@ -62,36 +49,19 @@ var post = function(text, FBpageId, TwitterClient, MastodonClient) {
         console.error(err);
       });
 
-  if (text.length>280) {
-    TwitterClient.post('media/upload', {media: text2png(stringWrap(text,40,'\n'), pngopt)}, function(error, media, response) {
-      console.log(response);
-      if (!error) {
-        var status = {
-          status: truncate(text) ,
-          media_ids: media.media_id_string // Pass the media id string
-        };
-        TwitterClient.post('statuses/update', status, function(error, tweet, response) {
-          console.log(response);
-          if (!error) {
-            console.log(tweet);
-          }
-        });
-      }
-    });
-  } else {
-    var status = {
-      status: text
-    };
-    TwitterClient.post('statuses/update', status, function(error, tweet, response) {
-      if (!error) {
-        console.log(tweet);
-      }
-      console.log(response);
-    });
-  }
+  let status = {
+    status: text
+  };
+  TwitterClient.post('statuses/update', status, function(error, tweet, response) {
+    if (!error) {
+      console.log(tweet);
+    }
+    console.log(response);
+  });
+  
 };
 
-var unixTimeInSec = function() {
+const unixTimeInSec = function() {
   return Math.round((new Date()).getTime()/1000);
 };
 
@@ -136,15 +106,15 @@ module.exports.tweet = async (event, context, callback) => {
         ReceiptHandle: data.Messages[0].ReceiptHandle
       };
       sqs.deleteMessage(params).promise().then(function(data) {
-        post(midsomerplots.generate(seed),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
+        post(seed,config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
         console.log(data);
       })
       .catch(function(err) {
-        post(midsomerplots.generate(unixTimeInSec()),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
+        post(unixTimeInSec(),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
         console.log(err);
       });
     }).catch(function(err) {
-      post(midsomerplots.generate(unixTimeInSec()));
+      post(unixTimeInSec(),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
       console.log(err);
     });
     callback(null, { message: 'Bot tweeted successfully!', event });

@@ -19,14 +19,13 @@
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
     "fb": "^2.0.0",
-    "megalodon": "^0.7.5",
+    "megalodon": "^1.0.3",
     "mersenne-twister": "^1.1.0",
     "midsomerplots-content": "github:matthewberryman/midsomerplots-content",
     "request": "^2.88.0",
-    "text2png": "^2.1.0",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "eslint": "^6.0.1"
+    "eslint": "^6.4.0"
   }
 }
