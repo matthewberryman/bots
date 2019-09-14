@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - npm install
-  post_build:
+  build:
     commands:
       - npm install -g serverless
       - serverless deploy
