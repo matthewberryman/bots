@@ -83,7 +83,7 @@ functions:
     events:
       - schedule: rate(4 hours)
     memorySize: 128
-    timeout: 12
+    timeout: 60
     role: midsomerSQSRole
     environment:
       SQS_QUEUE_URL: ${env:SQS_QUEUE_URL}
