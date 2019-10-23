@@ -26,6 +26,6 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "eslint": "^6.4.0"
+    "eslint": "^6.5.1"
   }
 }
