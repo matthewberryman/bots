@@ -1,34 +1,25 @@
 const AWS = require('aws-sdk'),
   Twitter = require('twitter'),
   Mastodon = require('megalodon/lib/mastodon'),
-  FB = require('fb'),
   midsomerplots = require('midsomerplots-content');
 
 const secretsmanager = new AWS.SecretsManager();
 
-var post = function(seed, FBpageId, TwitterClient, MastodonClient) {
+var post = function(seed, TwitterClient, MastodonClient) {
   let text = midsomerplots.generate(seed);
   while (text.length > 280) {
     text = midsomerplots.generate(unixTimeInSec());
   }
-  FB.api(FBpageId+'/feed', 'post', { message: text,
-    function (res) {
-      if(!res || res.error) { // eslint-disable-line no-negated-condition
-        console.log(!res ? 'FB error occurred' : res.error); // eslint-disable-line no-negated-condition
-      } else {
-        console.log('FB Post Id: ' + res.id);
-      }
-  }});
 
   MastodonClient.post('/statuses', {
       status: text,
       spoiler_text: '#midsomermurdersplot'
     }).then((res) => {
         console.log(res);
-      })
+    })
       .catch((err) => {
         console.error(err);
-      });
+    });
 
   let status = {
     status: text
@@ -46,14 +37,12 @@ const unixTimeInSec = function() {
   return Math.round((new Date()).getTime()/1000);
 };
 
-module.exports.tweet = async (event, context, callback) => {
+module.exports.handler = async (event, context, callback) => {
 
   try {
     let data = await secretsmanager.getSecretValue({'SecretId':'midsomerplots'}).promise();
     console.log(data);
     let config = JSON.parse(data.SecretString);
-
-    FB.options({timeout: 2000, accessToken: config.FACEBOOK_ACCESS_TOKEN});
 
     const TwitterClient = new Twitter({
          consumer_key: config.TWITTER_CONSUMER_KEY,
@@ -87,15 +76,15 @@ module.exports.tweet = async (event, context, callback) => {
         ReceiptHandle: data.Messages[0].ReceiptHandle
       };
       sqs.deleteMessage(params).promise().then(function(data) {
-        post(seed,config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
+        post(seed,TwitterClient,MastodonClient);
         console.log(data);
       })
       .catch(function(err) {
-        post(unixTimeInSec(),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
+        post(unixTimeInSec(),TwitterClient,MastodonClient);
         console.log(err);
       });
     }).catch(function(err) {
-      post(unixTimeInSec(),config.FACEBOOK_PAGE_ID,TwitterClient,MastodonClient);
+      post(unixTimeInSec(),TwitterClient,MastodonClient);
       console.log(err);
     });
     callback(null, { message: 'Bot tweeted successfully!', event });

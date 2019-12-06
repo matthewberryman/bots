@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
-    "fb": "^2.0.0",
     "megalodon": "^0.7.3",
     "mersenne-twister": "^1.1.0",
     "midsomerplots-content": "github:matthewberryman/midsomerplots-content",

@@ -79,7 +79,7 @@ resources:
 
 functions:
   bot:
-    handler: bot.tweet
+    handler: bot.handler
     events:
       - schedule: rate(4 hours)
     memorySize: 128
