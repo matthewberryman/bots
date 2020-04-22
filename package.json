@@ -8,6 +8,9 @@
     "test": "eslint .",
     "deploy": "serverless deploy"
   },
+  "bin": {
+    "midsomerplot": "./bot.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/matthewberryman/midsomerplots.git"
