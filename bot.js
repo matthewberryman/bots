@@ -1,25 +1,14 @@
 const AWS = require('aws-sdk'),
   Twitter = require('twitter'),
-  Mastodon = require('megalodon/lib/mastodon'),
   midsomerplots = require('midsomerplots-content');
 
 const secretsmanager = new AWS.SecretsManager();
 
-var post = function(seed, TwitterClient, MastodonClient) {
+var post = function(seed, TwitterClient) {
   let text = midsomerplots.generate(seed);
   while (text.length > 280) {
     text = midsomerplots.generate(unixTimeInSec());
   }
-
-  MastodonClient.post('/statuses', {
-      status: text,
-      spoiler_text: '#midsomermurdersplot'
-    }).then((res) => {
-        console.log(res);
-    })
-      .catch((err) => {
-        console.error(err);
-    });
 
   let status = {
     status: text
@@ -51,10 +40,6 @@ module.exports.handler = async (event, context, callback) => {
          access_token_secret: config.TWITTER_ACCESS_TOKEN_SECRET
         });
 
-    const MastodonClient = new Mastodon(
-      config.MASTODON_ACCESS_TOKEN,
-      'https://mastodon.cloud' + '/api/v1'
-    );
     const sqs = new AWS.SQS();
     const params = {
       QueueUrl: config.SQS_QUEUE_URL, /* required */
@@ -76,15 +61,15 @@ module.exports.handler = async (event, context, callback) => {
         ReceiptHandle: data.Messages[0].ReceiptHandle
       };
       sqs.deleteMessage(params).promise().then(function(data) {
-        post(seed,TwitterClient,MastodonClient);
+        post(seed,TwitterClient);
         console.log(data);
       })
       .catch(function(err) {
-        post(unixTimeInSec(),TwitterClient,MastodonClient);
+        post(unixTimeInSec(),TwitterClient);
         console.log(err);
       });
     }).catch(function(err) {
-      post(unixTimeInSec(),TwitterClient,MastodonClient);
+      post(unixTimeInSec(),TwitterClient);
       console.log(err);
     });
     callback(null, { message: 'Bot tweeted successfully!', event });
