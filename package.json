@@ -21,13 +21,12 @@
   },
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
-    "megalodon": "^0.7.3",
     "mersenne-twister": "^1.1.0",
     "midsomerplots-content": "github:matthewberryman/midsomerplots-content",
     "request": "^2.88.2",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "eslint": "^7.2.0"
+    "eslint": "^7.3.0"
   }
 }
