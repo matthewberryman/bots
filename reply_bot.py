@@ -30,9 +30,6 @@ def get_jsonparsed_data(url):
     data = response.read().decode("utf-8")
     return json.loads(data)
 
-plot_re = re.compile(r"(?i)plot")
-
-
 #pandas.set_option("display.max_rows", None, "display.max_columns", None)
 #print(ppm)
 #print(world)
@@ -69,8 +66,7 @@ def check_mentions(api, since_id):
     new_since_id = max(tweet.id, new_since_id)
     
     try:
-      search_object=plot_re.search(tweet.text)
-      if search_object is not None:
+      if "plot" in tweet.text.lower() or "murder" in tweet.text.lower():
 
         plot = get_jsonparsed_data("https://midsomerplots.acrossthecloud.net/plot")["plot"]
         print(plot)
