@@ -66,7 +66,7 @@ def check_mentions(api, since_id):
     new_since_id = max(tweet.id, new_since_id)
     
     try:
-      if "plot" in tweet.text.lower() or "murder" in tweet.text.lower():
+      if " plot" in tweet.text.lower() or "murder" in tweet.text.lower():
 
         plot = get_jsonparsed_data("https://midsomerplots.acrossthecloud.net/plot")["plot"]
         print(plot)
