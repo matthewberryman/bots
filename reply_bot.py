@@ -68,7 +68,7 @@ def check_mentions(api, since_id):
     try:
       if " plot" in tweet.text.lower() or "murder" in tweet.text.lower():
 
-        plot = get_jsonparsed_data("https://midsomerplots.acrossthecloud.net/plot")["plot"]
+        plot = get_jsonparsed_data("https://midsomerplots.acrossthecloud.net/plot?characterLimit=280")["plot"]
         print(plot)
 
         plot = "You are found" + plot.split("is found")[1]
