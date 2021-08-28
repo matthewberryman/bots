@@ -21,8 +21,9 @@
   },
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
+    "aws-sdk": "^2.943.0",
     "mersenne-twister": "^1.1.0",
-    "midsomerplots-content": "github:matthewberryman/midsomerplots-content",
+    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#aaa11e990a0df064a4df0ddb5cb1d576fb612e2f",
     "request": "^2.88.2",
     "twitter": "^1.7.1"
   },
