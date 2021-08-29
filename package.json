@@ -23,7 +23,7 @@
   "dependencies": {
     "aws-sdk": "^2.943.0",
     "mersenne-twister": "^1.1.0",
-    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#aaa11e990a0df064a4df0ddb5cb1d576fb612e2f",
+    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#f791d1a73c0ae15c41e4ad078fd9ebc73ffb6ae9",
     "request": "^2.88.2",
     "twitter": "^1.7.1"
   },
