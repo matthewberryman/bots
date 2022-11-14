@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "license": "GPL-3.0",
   "description": "Midsomer Murder Plot generator",
+  "type": "module",
   "main": "bot.js",
   "scripts": {
     "test": "eslint .",
@@ -21,7 +22,9 @@
   },
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
-    "aws-sdk": "^2.1223.0",
+    "@aws-sdk/client-secrets-manager": "^3.209.0",
+    "@aws-sdk/client-sqs": "^3.209.0",
+    "megalodon": "^4.1.1",
     "mersenne-twister": "^1.1.0",
     "midsomerplots-content": "github:matthewberryman/midsomerplots-content#0cbb85a2b04105c09144e49bd65505220cbb6801",
     "request": "^2.88.2",
