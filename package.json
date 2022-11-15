@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.209.0",
+    "@aws-sdk/client-secrets-manager": "^3.211.0",
     "megalodon": "^4.1.1",
     "mersenne-twister": "^1.1.0",
     "midsomerplots-content": "github:matthewberryman/midsomerplots-content#0cbb85a2b04105c09144e49bd65505220cbb6801",
@@ -30,7 +30,7 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "eslint": "^8.24.0",
+    "eslint": "^8.27.0",
     "serverless-dotenv-plugin": "^4.0.2"
   }
 }
