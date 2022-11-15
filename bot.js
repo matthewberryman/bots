@@ -49,7 +49,8 @@ export const handler = async () => {
 
     return 'bot posted successfully';
   } catch(e) {
-
-    return e;
+    console.log(e.message);
+    
+    return e.message;
   }
 };
