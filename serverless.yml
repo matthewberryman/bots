@@ -39,10 +39,10 @@ provider:
 
 resources:
   Resources:
-    midsomerSQSRole:
+    midsomerRole:
       Type: AWS::IAM::Role
       Properties:
-        RoleName: midsomerSQSRole
+        RoleName: midsomerRole
         AssumeRolePolicyDocument:
           Version: '2012-10-17'
           Statement:
@@ -56,12 +56,6 @@ resources:
             PolicyDocument:
               Version: '2012-10-17'
               Statement:
-                - Effect: Allow
-                  Action:
-                    - sqs:SendMessage
-                    - sqs:ReceiveMessage
-                    - sqs:DeleteMessage
-                  Resource: "arn:aws:sqs:us-east-1:*:*"
                 - Effect: Allow # note that these rights are given in the default policy and are required if you want logs out of your lambda(s)
                   Action:
                     - logs:CreateLogGroup
@@ -87,6 +81,4 @@ functions:
       - schedule: rate(4 hours)
     memorySize: 128
     timeout: 60
-    role: midsomerSQSRole
-    environment:
-      SQS_QUEUE_URL: ${env:SQS_QUEUE_URL}
+    role: midsomerRole

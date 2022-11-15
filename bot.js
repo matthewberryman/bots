@@ -23,21 +23,19 @@ const post = async (seed, TwitterClient, MastodonClient) => {
   });
 
   await MastodonClient.postStatus(text, {spoiler_text: '#murderplot'});
-  
 };
 
 const unixTimeInSec = function() {
   return Math.round((new Date()).getTime()/1000);
 };
 
-export const handler = async (event, context, callback) => {
+export const handler = async () => {
 
   try {
     const secretscommand = new GetSecretValueCommand({'SecretId':'midsomerplots'});
     const data = await secretsclient.send(secretscommand);
    
-    console.log(data);
-    let config = JSON.parse(data.SecretString);
+    const config = JSON.parse(data.SecretString);
 
     const TwitterClient = new Twitter({
          consumer_key: config.TWITTER_CONSUMER_KEY,
@@ -48,9 +46,10 @@ export const handler = async (event, context, callback) => {
 
     const MastodonClient = new Mastodon('https://mastodon.cloud', config.MASTODON_ACCESS_TOKEN);
     await post(unixTimeInSec(),TwitterClient,MastodonClient);
-    callback(null, { message: 'Bot tweeted successfully!', event });
+
+    return 'bot posted successfully';
   } catch(e) {
-    console.log(e);
-    callback(null, e);
+
+    return e;
   }
 };
