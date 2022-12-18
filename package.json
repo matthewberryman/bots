@@ -22,15 +22,15 @@
   },
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.211.0",
-    "megalodon": "^4.1.1",
+    "@aws-sdk/client-secrets-manager": "^3.231.0",
+    "megalodon": "^5.0.1",
     "mersenne-twister": "^1.1.0",
-    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#8436654283e5108e332c72c5390380336a439084",
+    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#0ca8e78a86aa74dace968df31e440b925f81a9db",
     "request": "^2.88.2",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "eslint": "^8.27.0",
+    "eslint": "^8.30.0",
     "serverless-dotenv-plugin": "^4.0.2"
   }
 }
