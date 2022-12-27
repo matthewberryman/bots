@@ -13,6 +13,9 @@
 
 service: midsomerplots # NOTE: update this with your service name
 
+plugins:
+  - serverless-prune-plugin
+
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
@@ -80,3 +83,9 @@ functions:
     memorySize: 128
     timeout: 60
     role: midsomerRole
+
+custom:
+  prune:
+    automatic: true
+    includeLayers: true
+    number: 3
