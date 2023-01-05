@@ -23,9 +23,9 @@
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.241.0",
-    "megalodon": "^5.0.5",
+    "megalodon": "^5.0.6",
     "mersenne-twister": "^1.1.0",
-    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#1731cb617a06d629379c920bab2e6608c92e315b",
+    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#11bf8709867a507747b81dbf1c75ec3a1db6faf5",
     "request": "^2.88.2",
     "twitter": "^1.7.1"
   },
