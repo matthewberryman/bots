@@ -1,6 +1,0 @@
-language: node_js
-node_js: '12.13.1'
-services:
-- docker
-install: npm install
-script: npm test
