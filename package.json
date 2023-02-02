@@ -25,7 +25,7 @@
     "@aws-sdk/client-secrets-manager": "^3.259.0",
     "megalodon": "^5.1.1",
     "mersenne-twister": "^1.1.0",
-    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#088d928f23ba4a74d50e64ef7a86317a4e735474",
+    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#9759aa18a68635e8fe8cdd7f2f6484471e79ac8d",
     "request": "^2.88.2",
     "twitter": "^1.7.1"
   },
