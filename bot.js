@@ -1,5 +1,5 @@
 import { GetSecretValueCommand, SecretsManagerClient } from '@aws-sdk/client-secrets-manager';
-import Twitter from 'twitter';
+import { TwitterApi } from 'twitter-api-v2';
 // eslint-disable-next-line sort-imports
 import { Mastodon } from 'megalodon';
 import midsomerplots from 'midsomerplots-content';
@@ -12,15 +12,7 @@ const post = async (seed, TwitterClient, MastodonClient) => {
     text = midsomerplots.generate(unixTimeInSec());
   }
 
-  let status = {
-    status: text
-  };
-  TwitterClient.post('statuses/update', status, function(error, tweet, response) {
-    if (!error) {
-      console.log(tweet);
-    }
-    console.log(response);
-  });
+  await TwitterClient.v2.tweet(text);
 
   await MastodonClient.postStatus(text, {spoiler_text: '#murderplot'});
 };
@@ -37,12 +29,12 @@ export const handler = async () => {
    
     const config = JSON.parse(data.SecretString);
 
-    const TwitterClient = new Twitter({
-         consumer_key: config.TWITTER_CONSUMER_KEY,
-         consumer_secret: config.TWITTER_CONSUMER_SECRET,
-         access_token_key: config.TWITTER_ACCESS_TOKEN_KEY,
-         access_token_secret: config.TWITTER_ACCESS_TOKEN_SECRET
-        });
+    const TwitterClient = new TwitterApi({
+         appKey: config.TWITTER_CONSUMER_KEY,
+         appSecret: config.TWITTER_CONSUMER_SECRET,
+         accessToken: config.TWITTER_ACCESS_TOKEN_KEY,
+         accessSecret: config.TWITTER_ACCESS_TOKEN_SECRET
+        }).readWrite;
 
     const MastodonClient = new Mastodon('https://mastodon.cloud', config.MASTODON_ACCESS_TOKEN);
     await post(unixTimeInSec(),TwitterClient,MastodonClient);
