@@ -11,7 +11,9 @@
 #
 # Happy Coding!
 
-service: midsomerplots # NOTE: update this with your service name
+useDotenv: true
+
+service: matthewbots # NOTE: update this with your service name
 
 plugins:
   - serverless-prune-plugin
@@ -40,10 +42,10 @@ provider:
 
 resources:
   Resources:
-    midsomerRole:
+    austenRole:
       Type: AWS::IAM::Role
       Properties:
-        RoleName: midsomerRole
+        RoleName: botRole
         AssumeRolePolicyDocument:
           Version: '2012-10-17'
           Statement:
@@ -53,7 +55,7 @@ resources:
                   - lambda.amazonaws.com
               Action: sts:AssumeRole
         Policies:
-          - PolicyName: midsomerPolicy
+          - PolicyName: botPolicy
             PolicyDocument:
               Version: '2012-10-17'
               Statement:
@@ -73,16 +75,30 @@ resources:
                 - Effect: Allow
                   Action:
                     - secretsmanager:GetSecretValue
-                  Resource: "arn:aws:secretsmanager:us-east-1:455563481328:secret:midsomerplots-hwtnWE"
+                  Resource:
+                    - "arn:aws:secretsmanager:us-east-1:455563481328:secret:midsomerplots-hwtnWE"
+                    - "arn:aws:secretsmanager:us-east-1:455563481328:secret:austenquotebot-13yHbH"
 
 functions:
-  bot:
+  austenquotebot:
     handler: bot.handler
+    environment:
+      BOT_NAME: austenquotebot
     events:
-      - schedule: rate(4 hours)
+      - schedule: rate(6 hours)
     memorySize: 128
     timeout: 60
-    role: midsomerRole
+    role: austenRole
+  midsomerbot:
+    handler: bot.handler
+    environment:
+      BOT_NAME: austenquotebot
+    events:
+      - schedule: rate(6 hours)
+    memorySize: 128
+    timeout: 60
+    role: austenRole
+
 
 custom:
   prune:

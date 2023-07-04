@@ -1,21 +1,22 @@
 import { GetSecretValueCommand, SecretsManagerClient } from '@aws-sdk/client-secrets-manager';
-import { TwitterApi } from 'twitter-api-v2';
-// eslint-disable-next-line sort-imports
+import JaneAustenQuotes from 
+'JaneAustenQuotes';
 import { Mastodon } from 'megalodon';
 import midsomerplots from 'midsomerplots-content';
 
 const secretsclient = new SecretsManagerClient();
 
-const post = async (seed, TwitterClient, MastodonClient) => {
-  let text = midsomerplots.generate(seed);
-  while (text.length > 280) {
-    text = midsomerplots.generate(unixTimeInSec());
+
+const post = async (seed, MastodonClient) => {
+  let text = process.env.BOT_NAME == 'midsomerplots' ? midsomerplots.generate(seed) : JaneAustenQuotes.generate(seed);
+
+  if (process.env.BOT_NAME === 'midsomerplots') {
+    await MastodonClient.postStatus(text, {spoiler_text: '#murderplot', visibility: 'unlisted'});
+  } else {
+   await MastodonClient.postStatus(text, {visibility: 'unlisted'});
   }
-
-  await TwitterClient.v2.tweet(text);
-
-  await MastodonClient.postStatus(text, {spoiler_text: '#murderplot'});
 };
+
 
 const unixTimeInSec = function() {
   return Math.round((new Date()).getTime()/1000);
@@ -24,20 +25,14 @@ const unixTimeInSec = function() {
 export const handler = async () => {
 
   try {
-    const secretscommand = new GetSecretValueCommand({'SecretId':'midsomerplots'});
+    const secretscommand = new GetSecretValueCommand({'SecretId':process.env.BOT_NAME});
     const data = await secretsclient.send(secretscommand);
    
     const config = JSON.parse(data.SecretString);
 
-    const TwitterClient = new TwitterApi({
-         appKey: config.TWITTER_CONSUMER_KEY,
-         appSecret: config.TWITTER_CONSUMER_SECRET,
-         accessToken: config.TWITTER_ACCESS_TOKEN_KEY,
-         accessSecret: config.TWITTER_ACCESS_TOKEN_SECRET
-        }).readWrite;
 
     const MastodonClient = new Mastodon('https://mastodon.cloud', config.MASTODON_ACCESS_TOKEN);
-    await post(unixTimeInSec(),TwitterClient,MastodonClient);
+    await post(unixTimeInSec(),MastodonClient);
 
     return 'bot posted successfully';
   } catch(e) {
