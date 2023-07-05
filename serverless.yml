@@ -42,7 +42,7 @@ provider:
 
 resources:
   Resources:
-    austenRole:
+    botRole:
       Type: AWS::IAM::Role
       Properties:
         RoleName: botRole
@@ -88,16 +88,16 @@ functions:
       - schedule: rate(6 hours)
     memorySize: 128
     timeout: 60
-    role: austenRole
+    role: botRole
   midsomerbot:
     handler: bot.handler
     environment:
-      BOT_NAME: austenquotebot
+      BOT_NAME: midsomerplots
     events:
-      - schedule: rate(6 hours)
+      - schedule: rate(4 hours)
     memorySize: 128
     timeout: 60
-    role: austenRole
+    role: botRole
 
 
 custom:
