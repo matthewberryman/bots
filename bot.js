@@ -1,15 +1,17 @@
 import { GetSecretValueCommand, SecretsManagerClient } from '@aws-sdk/client-secrets-manager';
+import pkg from '@atproto/api';
 import JaneAustenQuotes from 
 'JaneAustenQuotes';
 import { Mastodon } from 'megalodon';
 import midsomerplots from 'midsomerplots-content';
 
 const secretsclient = new SecretsManagerClient();
+const { BskyAgent } = pkg;
 
-
-const post = async (seed, MastodonClient) => {
+const post = async (seed, MastodonClient, BlueSkyClient) => {
   let text = process.env.BOT_NAME == 'midsomerplots' ? midsomerplots.generate(seed) : JaneAustenQuotes.generate(seed);
 
+  await BlueSkyClient.post({ text });
   if (process.env.BOT_NAME === 'midsomerplots') {
     await MastodonClient.postStatus(text, {spoiler_text: '#murderplot', visibility: 'unlisted'});
   } else {
@@ -31,8 +33,14 @@ export const handler = async () => {
     const config = JSON.parse(data.SecretString);
 
 
+    const BlueSkyClient = new BskyAgent({ service: "https://bsky.social"});
+    await BlueSkyClient.login({
+      identifier: config.BSKY_IDENTIFIER,
+      password: config.BSKY_PASSWORD,
+    });
     const MastodonClient = new Mastodon('https://mastodon.cloud', config.MASTODON_ACCESS_TOKEN);
-    await post(unixTimeInSec(),MastodonClient);
+    await post(unixTimeInSec(),MastodonClient,BlueSkyClient);
+
 
     return 'bot posted successfully';
   } catch(e) {
