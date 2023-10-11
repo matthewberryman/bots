@@ -1,5 +1,5 @@
 # Social media bot
-Bot code for Mastodon bots.
+Bot code for Mastodon & BlueSky bots.
 
 
 
