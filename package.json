@@ -24,13 +24,9 @@
   "dependencies": {
     "@atproto/api": "^0.6.20",
     "@aws-sdk/client-secrets-manager": "^3.427.0",
-    "express": "^4.18.2",
     "JaneAustenQuotes": "github:matthewberryman/JaneAustenQuotes#ea56d2d0c98c220fc2ca2cd2432f81caad973af3",
     "megalodon": "^8.1.3",
-    "mersenne-twister": "^1.1.0",
-    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#e00417852dac19ad389910a59d310cf0c478a519",
-    "readline-sync": "^1.4.10",
-    "request": "^2.88.2"
+    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#e00417852dac19ad389910a59d310cf0c478a519"
   },
   "devDependencies": {
     "eslint": "^8.51.0",
