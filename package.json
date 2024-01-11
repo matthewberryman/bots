@@ -25,7 +25,7 @@
     "@atproto/api": "^0.6.20",
     "@aws-sdk/client-secrets-manager": "^3.433.0",
     "JaneAustenQuotes": "github:matthewberryman/JaneAustenQuotes#ea56d2d0c98c220fc2ca2cd2432f81caad973af3",
-    "megalodon": "^8.1.6",
+    "megalodon": "^9.1.2",
     "midsomerplots-content": "github:matthewberryman/midsomerplots-content#e00417852dac19ad389910a59d310cf0c478a519"
   },
   "devDependencies": {
