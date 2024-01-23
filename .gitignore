@@ -8,3 +8,6 @@ jspm_packages
 # .env
 .env
 env/
+
+# macOS metadata
+.DS_Store
