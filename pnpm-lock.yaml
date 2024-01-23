@@ -18,8 +18,8 @@ dependencies:
     specifier: ^9.1.2
     version: 9.1.2
   midsomerplots-content:
-    specifier: github:matthewberryman/midsomerplots-content#e00417852dac19ad389910a59d310cf0c478a519
-    version: github.com/matthewberryman/midsomerplots-content/e00417852dac19ad389910a59d310cf0c478a519
+    specifier: github:matthewberryman/midsomerplots-content#1c5b4d0ed0b4971bf06ab40288c4863fee281440
+    version: github.com/matthewberryman/midsomerplots-content/1c5b4d0ed0b4971bf06ab40288c4863fee281440
 
 devDependencies:
   eslint:
@@ -1468,7 +1468,7 @@ packages:
     resolution: {integrity: sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg==}
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.1.13
+      ieee754: 1.2.1
       isarray: 1.0.0
     dev: true
 
@@ -4181,11 +4181,6 @@ packages:
       isexe: 2.0.0
     dev: true
 
-  /word-wrap@1.2.5:
-    resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
-    engines: {node: '>=0.10.0'}
-    dev: false
-
   /wrap-ansi@6.2.0:
     resolution: {integrity: sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==}
     engines: {node: '>=8'}
@@ -4298,12 +4293,12 @@ packages:
     version: 1.0.0
     dev: false
 
-  github.com/matthewberryman/midsomerplots-content/e00417852dac19ad389910a59d310cf0c478a519:
-    resolution: {tarball: https://codeload.github.com/matthewberryman/midsomerplots-content/tar.gz/e00417852dac19ad389910a59d310cf0c478a519}
+  github.com/matthewberryman/midsomerplots-content/1c5b4d0ed0b4971bf06ab40288c4863fee281440:
+    resolution: {tarball: https://codeload.github.com/matthewberryman/midsomerplots-content/tar.gz/1c5b4d0ed0b4971bf06ab40288c4863fee281440}
     name: midsomerplots-content
     version: 3.0.0
     hasBin: true
     dependencies:
       mersenne-twister: 1.1.0
-      word-wrap: 1.2.5
+      word-wrap: link:@aashutoshrathi/word-wrap:^1.2.6
     dev: false
