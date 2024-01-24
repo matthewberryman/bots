@@ -1,18 +1,10 @@
 version: 0.2
+
 phases:
   install:
-    runtime-versions:
-      nodejs: latest
     commands:
-      - npm install -g pnpm
-      - pnpm config set store-dir pnpm/store
-  pre_build:
-    on-failure: ABORT
-    commands:
-      - WORKDIR=$(pwd)
-      - PNPM_HOME="${WORKDIR}/pnpm"
+      - npm install
   build:
     commands:
-      - pnpm install
       - npm install -g serverless
       - serverless deploy
