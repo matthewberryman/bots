@@ -26,7 +26,7 @@
     "@aws-sdk/client-secrets-manager": "^3.496.0",
     "JaneAustenQuotes": "github:matthewberryman/JaneAustenQuotes#ea56d2d0c98c220fc2ca2cd2432f81caad973af3",
     "megalodon": "^9.1.2",
-    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#1c5b4d0ed0b4971bf06ab40288c4863fee281440"
+    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#fd6fdd4f5faad76ead7dab88e2b0a824140f1098"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
