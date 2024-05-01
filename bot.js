@@ -11,11 +11,19 @@ const { BskyAgent } = pkg;
 const post = async (seed, MastodonClient, BlueSkyClient) => {
   let text = process.env.BOT_NAME == 'midsomerplots' ? midsomerplots.generate(seed) : JaneAustenQuotes.generate(seed);
 
-  await BlueSkyClient.post({ text });
-  if (process.env.BOT_NAME === 'midsomerplots') {
-    await MastodonClient.postStatus(text, {spoiler_text: '#murderplot', visibility: 'unlisted'});
-  } else {
-   await MastodonClient.postStatus(text, {visibility: 'unlisted'});
+  try {
+    await BlueSkyClient.post({ text });
+  } catch (e) {
+    console.error(e);
+  }
+  try {
+    if (process.env.BOT_NAME === 'midsomerplots') {
+      await MastodonClient.postStatus(text, {spoiler_text: '#murderplot', visibility: 'unlisted'});
+    } else {
+    await MastodonClient.postStatus(text, {visibility: 'unlisted'});
+    }
+  } catch (e) {
+    console.error(e);
   }
 };
 
