@@ -23,15 +23,15 @@
   "homepage": "https://github.com/matthewberryman/midsomerplots",
   "dependencies": {
     "@aashutoshrathi/word-wrap": "^1.2.6",
-    "@atproto/api": "^0.12.7",
-    "@aws-sdk/client-secrets-manager": "^3.565.0",
+    "@atproto/api": "^0.13.18",
+    "@aws-sdk/client-secrets-manager": "^3.699.0",
     "JaneAustenQuotes": "github:matthewberryman/JaneAustenQuotes#ea56d2d0c98c220fc2ca2cd2432f81caad973af3",
-    "megalodon": "^10.0.0",
-    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#fd6fdd4f5faad76ead7dab88e2b0a824140f1098"
+    "megalodon": "^10.0.7",
+    "midsomerplots-content": "github:matthewberryman/midsomerplots-content#967fa78e4700a33428b2f194ccc57d7b3b03a135"
   },
   "devDependencies": {
-    "eslint": "^9.1.1",
+    "eslint": "^9.15.0",
     "serverless": "^3.39.0",
-    "serverless-prune-plugin": "^2.0.2"
+    "serverless-prune-plugin": "^2.1.0"
   }
 }
