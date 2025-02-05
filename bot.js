@@ -1,12 +1,10 @@
 import { GetSecretValueCommand, SecretsManagerClient } from '@aws-sdk/client-secrets-manager';
-import pkg from '@atproto/api';
 import JaneAustenQuotes from 
 'JaneAustenQuotes';
 import { Mastodon } from 'megalodon';
 import midsomerplots from 'midsomerplots-content';
 
 const secretsclient = new SecretsManagerClient();
-const { BskyAgent } = pkg;
 
 const post = async (seed, MastodonClient) => {
   let text = process.env.BOT_NAME == 'midsomerplots' ? midsomerplots.generate(seed) : JaneAustenQuotes.generate(seed);
