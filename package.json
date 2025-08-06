@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "eslint": "^9.19.0",
-    "serverless": "^3.40.0",
+    "serverless": "^4.17.2",
     "serverless-prune-plugin": "^2.1.0"
   }
 }
